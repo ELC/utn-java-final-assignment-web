@@ -18,7 +18,7 @@ public class LogIn extends HttpServlet {
     public LogIn() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +40,8 @@ public class LogIn extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/MainAppWindow.jsp").forward(request, response);			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
 		}
 	}
 }
