@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logic.Application;
-import logic.ControllerABMCPerson;
-import entities.Person;
-
 @WebServlet({ "/index" })
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;

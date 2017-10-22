@@ -2,27 +2,29 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <h2 class="logo"><a href="#"> LOGO </a></h2>
+                <h2 class="logo"><img src="https://logojoy.com/wp-content/uploads/2017/10/Ic_brand_guidelines@2x.png"> </h2>
             </div>
             <div class="col-sm-2">
                 <h5>Get started</h5>
                 <ul>
                     <li><a href="#">Home</a>
                     </li>
-                    <li><a href="#">Sign up</a>
+                    <li><a href="#">Bookable</a>
                     </li>
-                    <li><a href="#">Downloads</a>
+                    <li><a href="#">Type Bookable</a>
+                    </li>
+                    <li><a href="#">Booking</a>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-2">
                 <h5>About us</h5>
                 <ul>
-                    <li><a href="#">Company Information</a>
+                    <li><a href="#">Group Members</a>
                     </li>
-                    <li><a href="#">Contact us</a>
+                    <li><a href="#">Desktop Version</a>
                     </li>
-                    <li><a href="#">Reviews</a>
+                    <li><a href="#">Release Notes</a>
                     </li>
                 </ul>
             </div>
@@ -30,10 +32,6 @@
                 <h5>Support</h5>
                 <ul>
                     <li><a href="#">FAQ</a>
-                    </li>
-                    <li><a href="#">Help desk</a>
-                    </li>
-                    <li><a href="#">Forums</a>
                     </li>
                 </ul>
             </div>
@@ -48,6 +46,6 @@
         </div>
     </div>
     <div class="footer-copyright">
-        <p>© 2016 Copyright Text </p>
+        <p>2017 - Universidad Tecnológica Nacional Facultad Regional Rosario - UTN FRRO - Castaño Ezequiel, Mulassi Matías, Sacchi Priscila</p>
     </div>
 </footer>

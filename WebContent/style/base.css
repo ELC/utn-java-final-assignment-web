@@ -20,6 +20,9 @@
     color: #337ab7;
 }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background-color: #3c3d41;
+}
 
 
 #myFooter .footer-copyright {
@@ -30,7 +33,7 @@
 }
 
 #myFooter .row {
-    margin-bottom: 60px;
+    margin-bottom: 0px;
 }
 
 #myFooter .navbar-brand {
