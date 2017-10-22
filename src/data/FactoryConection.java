@@ -8,11 +8,11 @@ public class FactoryConection {
 	
 	private static FactoryConection instancia;
 	
-	private String dbhost = "127.0.0.1";
-	private String dbuser = "root";
-	private String dbpassword = "ROOT";
-	private String dbport = "3306";
-	private String dbname = "java2017";
+	private String dbhost = ProjectConfiguration.getProperty("dbhost");
+	private String dbuser = ProjectConfiguration.getProperty("dbuser");
+	private String dbpassword = ProjectConfiguration.getProperty("dbpassword");
+	private String dbport = ProjectConfiguration.getProperty("dbport");
+	private String dbname = ProjectConfiguration.getProperty("dbname");
 	
 	private FactoryConection(){
 		

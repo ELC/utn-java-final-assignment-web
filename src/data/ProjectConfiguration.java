@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class ProjectConfiguration {
 
-	private static String filename = "config.properties";
+	private static String filename = "D:\\Repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
 	private static Map<String, String> properties = null; //Map <String, String,  es un diccionario//
 
 	public static void setProperty(String key, String value) {
