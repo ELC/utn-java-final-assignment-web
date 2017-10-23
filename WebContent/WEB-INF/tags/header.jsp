@@ -12,23 +12,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="border-color: #e7e7e7; color: #f9f9f9; background-color: #3c3d41;">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/index">Home</a>
+                <li class="active"><a href="${pageContext.request.contextPath}/index">Home</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Person<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Person/CRUD">Crud</a>
                         </li>
-                        <li><a href="#">Show All</a>
+                        <li><a href="${pageContext.request.contextPath}/Person/Show">Show All</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Type Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/TypeBookable/CRUD">Crud</a>
                         </li>
-                        <li><a href="#">Show All</a>
+                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Show">Show All</a>
                         </li>
                     </ul>
                 </li>
@@ -36,24 +36,24 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Bookable/CRUD">Crud</a>
                         </li>
-                        <li><a href="#">Show All</a>
+                        <li><a href="${pageContext.request.contextPath}/Bookable/Show">Show All</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Booking/CRUD">Crud</a>
                         </li>
-                        <li><a href="#">Show All</a>
+                        <li><a href="${pageContext.request.contextPath}/Booking/Show">Show All</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="./index">Log In<span class="sr-only">(current)</span></a>
+                <li class="active"><a href="#" data-toggle="modal" data-target="#login-modal">Log In<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -61,3 +61,22 @@
     </div>
     <!--/.container-fluid -->
 </nav>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Login</h1>
+            <br>
+            <form name="signin" action="login" method="post">
+                <input name="user" id="inputUser" class="form-control" placeholder="User" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
+                <input name="pass" id="inputPass" class="form-control" placeholder="Pass" required type="Password" style="margin: 15px 0px 15px 0px; height:2em">
+                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            </form>
+
+            <div class="login-help">
+                If you don't have an account, contact the administrator
+            </div>
+        </div>
+    </div>
+</div>
+	    
