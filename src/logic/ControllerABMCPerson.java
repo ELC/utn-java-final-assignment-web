@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.List;
+
 import data.DataPerson;
 import entities.*;
 import util.exceptions.LoginAppDataException;
@@ -55,5 +57,9 @@ public class ControllerABMCPerson {
 	
 	public Person getByDni(String dni) throws Exception{
 		return dataPer.getByDni(dni);
+	}
+	
+	public List<Person> getAll() throws Exception{
+		return dataPer.getAll();
 	}
 }

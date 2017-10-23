@@ -30,6 +30,14 @@ public class ControllerABMCBookable {
 		return dataBookable.getByName(b);
 	}
 	
+	public Bookable getById(Bookable b)throws Exception{
+		return dataBookable.getById(b);
+	}
+	
+	public Bookable getById(int id)throws Exception{
+		return dataBookable.getById(id);
+	}
+	
 	public Bookable getByName(String name)throws Exception{
 		return dataBookable.getByName(name);
 	}

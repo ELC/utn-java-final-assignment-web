@@ -38,6 +38,21 @@ public class ControllerABMCReservation {
 		reservations.removeIf(s -> s.getDate().before(now));
 		return reservations;		
 	}
+	
+	public List<Reservation> getAllByUser(Person p) throws Exception{
+
+		ArrayList<Reservation> reservations;
+		if (false){ // app.hasPermission(AccessLevel.READ_ALLBOOKING) revisar para web
+			reservations = (ArrayList<Reservation>) dataRes.getAll();
+		} else{
+			reservations = (ArrayList<Reservation>) dataRes.getByIdPerson(p);
+		}
+		Timestamp now = new Timestamp((new Date()).getTime());
+		
+		reservations.removeIf(s -> s.getDate().before(now));
+		return reservations;		
+	}
+	
 
 	public void DeleteReservation(Reservation re)throws Exception{
 		app.isLoggedIn();

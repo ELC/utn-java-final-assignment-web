@@ -18,7 +18,7 @@ public class LogIn extends HttpServlet {
     public LogIn() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,11 +37,11 @@ public class LogIn extends HttpServlet {
 			
 			request.getSession().setAttribute("user", pers);
 			
-			request.getRequestDispatcher("WEB-INF/MainAppWindow.jsp").forward(request, response);			
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);			
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 		}
 	}
 }

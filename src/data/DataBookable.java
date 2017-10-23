@@ -49,14 +49,14 @@ public class DataBookable {
 		return bookables;
 	}
 	
-	public  Bookable getById(int id) throws Exception{
+	public Bookable getById(Bookable bo) throws Exception{
 		Bookable b= new Bookable();
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
 			stmt= FactoryConection.getInstancia().getConn().prepareStatement(		
 					"select * from bookable where id_bookable=?");
-			stmt.setInt(1, id); 
+			stmt.setInt(1, bo.getId()); 
 			rs = stmt.executeQuery();
 			if(rs!=null && rs.next()){
 				b=buildBookable(rs);
@@ -73,6 +73,12 @@ public class DataBookable {
 			}
 		}	
 		return b;
+	}
+	
+	public Bookable getById(int id) throws Exception{
+		Bookable b = new Bookable();
+		b.setId(id);
+		return getById(b);
 	}
 	
 	public  Bookable getByName(Bookable b) throws Exception{
@@ -104,31 +110,31 @@ public class DataBookable {
 		return b;
 	}
 	
-public  Bookable getByName(String name) throws Exception{
-		Bookable b= new Bookable();
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try {
-			stmt= FactoryConection.getInstancia().getConn().prepareStatement(		
-					"select * from bookable where name_bookable=?");
-			stmt.setString(1, name); 
-			rs = stmt.executeQuery();
-			if(rs!=null && rs.next()){
-				b=buildBookable(rs);
-			}
-		} catch (Exception e) {
-			throw e;
-		} finally {	
+	public  Bookable getByName(String name) throws Exception{
+			Bookable b= new Bookable();
+			PreparedStatement stmt=null;
+			ResultSet rs=null;
 			try {
-				if(rs!=null) rs.close();
-				if(stmt!=null) stmt.close();
-				FactoryConection.getInstancia().releaseConn();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}	
-		return b;
-	}
+				stmt= FactoryConection.getInstancia().getConn().prepareStatement(		
+						"select * from bookable where name_bookable=?");
+				stmt.setString(1, name); 
+				rs = stmt.executeQuery();
+				if(rs!=null && rs.next()){
+					b=buildBookable(rs);
+				}
+			} catch (Exception e) {
+				throw e;
+			} finally {	
+				try {
+					if(rs!=null) rs.close();
+					if(stmt!=null) stmt.close();
+					FactoryConection.getInstancia().releaseConn();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}	
+			return b;
+		}
 	
 	public  ArrayList<Bookable> getAllByType(TypeBookable bookable_type) throws Exception{
 		ArrayList<Bookable> bookables= new ArrayList<Bookable>();
