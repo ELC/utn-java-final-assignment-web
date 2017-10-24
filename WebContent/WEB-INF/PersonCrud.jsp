@@ -4,7 +4,7 @@
 <t:base>
     <jsp:body>
 
-<form name="signin" action="${pageContext.request.contextPath}/PersonCrud" method="post">
+<form name="signin" action="${pageContext.request.contextPath}/Person/CRUD" method="post">
                
                 <input name="Dni" id="inputDni" class="form-control" placeholder="Dni" required type="Dni" style="margin: 15px 0px 15px 0px; height:2em">
                 <input name="Name_Person" id="Name_Person" class="form-control" placeholder="Name_Person" required autofocus style="margin: 15px 0px 15px 0px; height:2em">

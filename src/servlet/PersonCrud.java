@@ -23,7 +23,6 @@ public class PersonCrud extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 			
@@ -38,9 +37,9 @@ public class PersonCrud extends HttpServlet {
 			
 			// 1 para agregar 2 para borrar 3 para consultar 4 para modificar
 			
-			if (action=="1") {
+			if (action.equals("1")) {
 				Person per=new Person();
-				per.setId(Integer.parseInt(id));
+				//per.setId(Integer.parseInt(id));
 				per.setName(name);
 				per.setDni(dni);
 				per.setLastName(lastName);
@@ -64,16 +63,14 @@ public class PersonCrud extends HttpServlet {
 			
 			
 	
-			
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);			
+			request.getRequestDispatcher("/index.jsp").forward(request, response);			
 			
 		} catch (Exception e) {
-			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 		
-		
-		request.getRequestDispatcher("/WEB-INF/PersonCrud.jsp").forward(request, response);
+		//request.getRequestDispatcher("/WEB-INF/PersonCrud.jsp").forward(request, response);
+		//request.getRequestDispatcher(destination).forward(request, response);
 	}
 }
 
