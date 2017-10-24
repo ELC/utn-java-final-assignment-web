@@ -14,19 +14,19 @@ public class ControllerABMCTypeBookable {
 	private Application app = Application.getInstancia();
 
 	public void RegisterTypeBookable(TypeBookable b)throws Exception{
-		app.isLoggedIn();
+		//app.isLoggedIn();
 //		app.hasPermission(AccessLevel.CREATE_TYPEBOOKABLE);
 		dataTypeBookable.add(b);
 	}
 	
 	public void ModifyTypeBookable(TypeBookable b)throws Exception{
-		app.isLoggedIn();	
+		//app.isLoggedIn();	
 //		app.hasPermission(AccessLevel.MODIFY_TYPEBOOKABLE);
 		dataTypeBookable.update(b);
 	}
 	
 	public void DeleteTypeBookable(TypeBookable b)throws Exception{
-		app.isLoggedIn();
+		//app.isLoggedIn();
 //		app.hasPermission(AccessLevel.DELETE_TYPEBOOKABLE);
 		dataTypeBookable.delete(b);
 	}
