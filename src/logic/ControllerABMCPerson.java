@@ -40,7 +40,7 @@ public class ControllerABMCPerson {
 	}
 	
 	public void ModifyPerson(Person p)throws Exception{
-		app.isLoggedIn();
+		//app.isLoggedIn();
 //		app.hasPermission(AccessLevel.MODIFY_USER);
 		dataPer.update(p);
 	}

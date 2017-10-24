@@ -17,7 +17,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Person<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Person/CRUD">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Add/Person">AddPerson</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/Delete/Person">DeletePerson</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/Update/Person">UpdatePerson</a>
+                        </li>
+                         <li><a href="${pageContext.request.contextPath}/Select/Person">SelectPerson</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/Person/Show">Show All</a>
                         </li>
