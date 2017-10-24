@@ -15,7 +15,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <c:forEach var="typebookable" items="${TypeBookables}">
+	    <c:forEach var="typebookable" items="${TypeBookables}"> 
 			<tr>
 				<td>${typebookable.id}</td>
 				<td>${typebookable.name}</td>
@@ -23,7 +23,7 @@
 				<td>${typebookable.dayslimit}</td>
 				<td>${typebookable.restriction}</td>
 			</tr>
-	     	</c:forEach>
+	     </c:forEach>
 	    </tbody>
 	  </table>
     </jsp:body>

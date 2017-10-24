@@ -34,7 +34,7 @@ public class ControllerABMCPerson {
 	}
 	
 	public void RegisterPerson(Person p)throws Exception{
-		app.isLoggedIn();
+		//app.isLoggedIn();
 //		app.hasPermission(AccessLevel.CREATE_USER);
 		dataPer.add(p);
 	}

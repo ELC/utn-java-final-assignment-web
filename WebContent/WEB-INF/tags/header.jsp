@@ -1,6 +1,6 @@
 <!-- Static navbar -->
 <nav class="navbar navbar-default myFooter" style="background-color: #3c3d41; color: #f9f9f9;">
-    <div class="container-fluid" style="width: 1170px;">
+    <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -67,7 +67,7 @@
         <div class="loginmodal-container">
             <h1>Login</h1>
             <br>
-            <form name="signin" action="login" method="post">
+            <form name="signin" action="${pageContext.request.contextPath}/login" method="post">
                 <input name="user" id="inputUser" class="form-control" placeholder="User" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
                 <input name="pass" id="inputPass" class="form-control" placeholder="Pass" required type="Password" style="margin: 15px 0px 15px 0px; height:2em">
                 <input type="submit" name="login" class="login loginmodal-submit" value="Login">
