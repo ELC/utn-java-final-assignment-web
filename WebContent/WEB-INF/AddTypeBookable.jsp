@@ -6,7 +6,7 @@
 
 <h1>Add TypeBookable</h1>
 
-<form name="AddTypeBookable" action="${pageContext.request.contextPath}/TypeBookable/CRUD" method="post">
+<form name="AddTypeBookable" action="${pageContext.request.contextPath}/Add/TypeBookable" method="post">
                
                 <input name="Name" id="inputName" class="form-control" placeholder="Name" required type="Name" style="margin: 15px 0px 15px 0px; height:2em">
                 
@@ -15,17 +15,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">addTypeBookable</button>
                 
             </form>
-            
-            <h1>Delete TypeBookable</h1>
-            
- <form name="DeleteTypeBookable" action="${pageContext.request.contextPath}/TypeBookable/CRUD" method="delete">
-               
-                <input name="Name" id="inputName" class="form-control" placeholder="Name" required type="Name" style="margin: 15px 0px 15px 0px; height:2em">
-                
-                <button class="btn btn-lg btn-primary btn-block" type="submit">DeleteTypeBookable</button>
-                
-            </form>
-            
+
             
 
 

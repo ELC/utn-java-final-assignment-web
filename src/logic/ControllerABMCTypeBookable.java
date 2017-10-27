@@ -9,9 +9,13 @@ import data.DataTypeBookable;
 import entities.*;
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class ControllerABMCTypeBookable {
+
+
+public class ControllerABMCTypeBookable{
 	private DataTypeBookable dataTypeBookable = new DataTypeBookable();
 	private Application app = Application.getInstancia();
+	
+	
 
 	public void RegisterTypeBookable(TypeBookable b)throws Exception{
 		//app.isLoggedIn();

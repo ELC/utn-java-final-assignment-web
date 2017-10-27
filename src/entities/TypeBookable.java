@@ -1,14 +1,19 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TypeBookable {
+public class TypeBookable implements Serializable {
+	
 	
 	private int id;
 	private String name;
 	private String hourslimit;
 	private int dayslimit;
 	private int restriction;
+	
+	public TypeBookable(){}
+	
 	
 	public int getId() {
 		return id;

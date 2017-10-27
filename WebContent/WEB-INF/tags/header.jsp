@@ -32,7 +32,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Type Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/TypeBookable/CRUD">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Add/TypeBookable">AddTypeBookable</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/Delete/TypeBookable">DeleteTypeBookable</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/Update/TypeBookable">UpdateTypeBookable</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/TypeBookable/Show">Show All</a>
                         </li>
@@ -42,7 +46,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Bookable/CRUD">Crud</a>
+                        <li><a href="${pageContext.request.contextPath}/Add/Bookable">AddBookable</a>
+                        </li>
+                          <li><a href="${pageContext.request.contextPath}/Delete/Bookable">DeleteBookable</a>
+                        </li>
+                          <li><a href="${pageContext.request.contextPath}/Update/Bookable">UpdateBookable</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/Bookable/Show">Show All</a>
                         </li>
