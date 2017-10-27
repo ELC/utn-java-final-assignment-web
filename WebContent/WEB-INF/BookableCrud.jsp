@@ -3,7 +3,10 @@
 
 <t:base>
     <jsp:body>
-CRUD BOOKABLE
+	 
+ 		
+
+
 
     </jsp:body>
 </t:base>

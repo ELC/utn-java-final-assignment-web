@@ -1,9 +1,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <t:base>
     <jsp:body>
-		CRUD booking
-
+		<form name="AddBooking" action="${pageContext.request.contextPath}/Booking/CRUD" method="GET">
+        	<select style="width : 143px" name="tb" >
+            	<c:forEach var="tb" items="${ListTypeBookables}">
+					<option value="${tb.id}" >
+						${tb.name}
+					</option>
+	     		</c:forEach>
+            </select>
+            <select style="width : 143px" name="selectedType" >
+            	<c:forEach var="b" items="${ListBookables}">
+					<option value="${b.id}" >
+						${b.name}
+					</option>
+	     		</c:forEach>
+            </select>
+        	<input type="date" name="date">
+			<input type="time" name="time">
+			
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">add Booking</button>        
+    	</form>
     </jsp:body>
 </t:base>

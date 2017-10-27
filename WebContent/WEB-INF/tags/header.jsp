@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="border-color: #e7e7e7; color: #f9f9f9; background-color: #3c3d41;">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="${pageContext.request.contextPath}/index">Home</a>
+                <li class="active"><a href="${pageContext.request.contextPath}/index.jsp">Home</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Person<span class="caret"></span></a>

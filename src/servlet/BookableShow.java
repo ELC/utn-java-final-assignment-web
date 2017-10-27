@@ -21,9 +21,8 @@ public class BookableShow extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			ControllerABMCBookable ctrlBookable = new ControllerABMCBookable();
-			List<Bookable> books = ctrlBookable.GetAll();
 			
-			request.getSession().setAttribute("Bookables", books);
+			request.getSession().setAttribute("Bookables", ctrlBookable.GetAll());
 			
 			request.getRequestDispatcher("/WEB-INF/BookableShow.jsp").forward(request, response);
 		} catch (Exception e) {

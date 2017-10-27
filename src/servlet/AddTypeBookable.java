@@ -11,14 +11,14 @@ import entities.TypeBookable;
 
 import logic.ControllerABMCTypeBookable;
 
-@WebServlet({ "/TypeBookable/CRUD" })
-public class TypeBookableCrud extends HttpServlet {
+@WebServlet({ "/Add/TypeBookable" })
+public class AddTypeBookable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public TypeBookableCrud() {}
+    public AddTypeBookable() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/TypeBookableCrud.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/AddTypeBookable.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,32 +38,14 @@ public class TypeBookableCrud extends HttpServlet {
 			ctrlTypeBookable.RegisterTypeBookable(t);
 			
 			
-			request.getRequestDispatcher("index.jsp").forward(request, response);			
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);			
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
 
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-	
-		try {
-			
-			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
-			String name=request.getParameter("Name");
-			TypeBookable t=new TypeBookable();
-			t.setName(name);
-			ctrlTypeBookable.DeleteTypeBookable(t);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-			
-		} catch (Exception e) {
-			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-		
-		
-		
-	}
+
 }
 

@@ -33,24 +33,22 @@ public class AddPerson extends HttpServlet {
 			String email=request.getParameter("Email");
 			
 			
-				Person per=new Person();
-				//per.setId(Integer.parseInt(id));
-				per.setName(name);
-				per.setDni(dni);
-				per.setLastName(lastName);
-				per.setPassword(pass);
-				per.setUsername(user);
-				per.setEmail(email);
-				ctrlPer.RegisterPerson(per);
-			
-				request.getRequestDispatcher("/index.jsp").forward(request, response);			
-			
+			Person per=new Person();
+			//per.setId(Integer.parseInt(id));
+			per.setName(name);
+			per.setDni(dni);
+			per.setLastName(lastName);
+			per.setPassword(pass);
+			per.setUsername(user);
+			per.setEmail(email);
+			ctrlPer.RegisterPerson(per);
+		
+			request.getRequestDispatcher("/Person/Show").forward(request, response);			
+				
 		} catch (Exception e) {
+			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
-		
-		//request.getRequestDispatcher("/WEB-INF/PersonCrud.jsp").forward(request, response);
-		//request.getRequestDispatcher(destination).forward(request, response);
 	}
 }
 
