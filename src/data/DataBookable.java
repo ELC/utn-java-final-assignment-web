@@ -286,7 +286,7 @@ public class DataBookable {
 					b.setId(rs.getInt("id_bookable"));
 					b.setName(rs.getString("name_bookable"));
 					bookables.add(b);
-				}	
+				}
 			}
 		} catch (SQLException e) {
 			throw e;

@@ -13,7 +13,7 @@ public class ControllerABMCReservation {
 	private DataReservation dataRes = new DataReservation();
 	
 	public void RegisterReservation(Reservation re)throws Exception{
-		app.isLoggedIn();	
+		//app.isLoggedIn();	
 //		app.hasPermission(AccessLevel.CREATE_RESERVATION);
 		dataRes.add(re);
 	}

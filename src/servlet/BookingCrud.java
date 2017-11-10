@@ -2,6 +2,10 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,20 +32,32 @@ public class BookingCrud extends HttpServlet {
 		try{
 			String action = request.getParameter("action");	        
 	        Reservation booking = new Reservation();
+	        String tbs = request.getParameter("tb");
 	        
-	        // leer el parametro de fecha
-	        // leer el parametro de la hora
-	        // validar que ninguno de los dos sea nulo
-	        // unirlos
-	         // ejecutar código siguiente
-	        
-	        if (request.getParameter("tb") != null){
-	        	Integer tb = Integer.parseInt(request.getParameter("tb"));
-	        	forward = "/WEB-INF/BookingCrud.jsp";
-	        	ControllerABMCBookable ctrlBook= new ControllerABMCBookable();
+	        if (tbs != null){
+	        	
+		        
+		        String date = request.getParameter("date");
+		        String time = request.getParameter("time");
+		        
+		        // validar que ninguno de los dos sea nulo
+		        
+		        LocalDateTime dt = LocalDateTime.of(LocalDate.parse(date), LocalTime.parse(time));
+		        Timestamp timestamp = Timestamp.valueOf(dt);
+		        booking.setDate(timestamp);
+		        Person p = new Person();
+		        p.setId(1);
+		        booking.setPerson(p);
+		        request.getSession().setAttribute("Booking", booking);
+	        	Integer tb = Integer.parseInt(tbs);
 	        	TypeBookable typeBookable = new TypeBookable();
 				typeBookable.setId(tb);
-	        	request.getSession().setAttribute("ListBookables", ctrlBook.getAllByType(typeBookable));
+				
+				ControllerABMCBookable ctrlBook= new ControllerABMCBookable();
+				List<Bookable> l = ctrlBook.getAllAvailable(typeBookable, timestamp);
+	        	request.getSession().setAttribute("ListBookables", l);
+	        	
+	        	forward = "/WEB-INF/BookingCrud2.jsp";
 	        	request.getRequestDispatcher(forward).forward(request, response);
 	        	return;
 	        }
@@ -72,7 +88,20 @@ public class BookingCrud extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
+		String forward = "/Booking/BookingCrud";
+		try{
+			ControllerABMCReservation ctrlBooking = new ControllerABMCReservation();
+			Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
+			Bookable b = new Bookable();
+			b.setId(Integer.parseInt(request.getParameter("selectedType")));
+			booking.setBookable(b);
+			booking.setDetail("");
+			ctrlBooking.RegisterReservation(booking);
+			request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher(forward).forward(request, response);
+		}
 	}
 }
 

@@ -37,7 +37,7 @@ public class FactoryConection {
 	public Connection getConn(){		
 		try { 
 			if(conn==null || conn.isClosed()){
-				conn=  DriverManager.getConnection("jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname+"?user="+dbuser+"&password="+dbpassword);
+				conn=  DriverManager.getConnection("jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname+"?user="+dbuser+"&password="+dbpassword+"&characterEncoding=Latin1");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

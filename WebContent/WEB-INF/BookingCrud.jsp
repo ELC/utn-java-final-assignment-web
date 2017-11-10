@@ -14,17 +14,11 @@
 					</option>
 	     		</c:forEach>
             </select>
-            <select style="width : 143px" name="selectedType" >
-            	<c:forEach var="b" items="${ListBookables}">
-					<option value="${b.id}" >
-						${b.name}
-					</option>
-	     		</c:forEach>
-            </select>
+
         	<input type="date" name="date">
 			<input type="time" name="time">
 			
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">add Booking</button>        
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">next Step</button>        
     	</form>
     </jsp:body>
 </t:base>

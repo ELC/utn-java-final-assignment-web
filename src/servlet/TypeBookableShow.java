@@ -20,6 +20,10 @@ public class TypeBookableShow extends HttpServlet {
     public TypeBookableShow() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			ControllerABMCTypeBookable ctrlTypeBookable = new ControllerABMCTypeBookable();
 			List<TypeBookable> tb = ctrlTypeBookable.getAll();
@@ -31,9 +35,5 @@ public class TypeBookableShow extends HttpServlet {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/TypeBookableShow.jsp").forward(request, response);
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/TypeBookableShow.jsp").forward(request, response);
 	}
 }
