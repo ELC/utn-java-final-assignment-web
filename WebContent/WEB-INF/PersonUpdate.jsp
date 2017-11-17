@@ -10,7 +10,7 @@
 	        <input name="User_Person" id="inputUser" class="form-control" placeholder=" New user" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
 	        <input name="Password" id="inputPassWord" class="form-control" placeholder=" New pass" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
 	        <input name="Email" id="inputEmail" class="form-control" placeholder="New Email" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">UpdatePerson</button>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Update Person</button>
         </form>
     </jsp:body>
 </t:base>

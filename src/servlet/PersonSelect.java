@@ -32,10 +32,10 @@ public class PersonSelect extends HttpServlet {
 				throw new Exception("User doesn't exist");			
 			}
 			request.getSession().setAttribute("person", p);		
-			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);			
+			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
 		}
 
 	}

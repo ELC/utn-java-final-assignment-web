@@ -17,19 +17,20 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Person<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Person/Add">AddPerson</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Person/Delete">DeletePerson</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Person/Update">UpdatePerson</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Person/Select">SelectPerson</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Person/Add">Add</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Person/Delete">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Person/Update">Update</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Person/Select">Select</a></li>
                         <li><a href="${pageContext.request.contextPath}/Person/Show">Show All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Type Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Add">AddTypeBookable</a></li>
-                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Delete">DeleteTypeBookable</a></li>
-                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Update">UpdateTypeBookable</a></li>
+                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Add">Add</a></li>
+                         <li><a href="${pageContext.request.contextPath}/TypeBookable/Select">Select</a></li>
+                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Delete">Delete</a></li>
+                        <li><a href="${pageContext.request.contextPath}/TypeBookable/Update">Update</a></li>
                         <li><a href="${pageContext.request.contextPath}/TypeBookable/Show">Show All</a></li>
                     </ul>
                 </li>
@@ -37,16 +38,17 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookable<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Bookable/Add">AddBookable</a></li>
-                          <li><a href="${pageContext.request.contextPath}/Bookable/Delete">DeleteBookable</a></li>
-                          <li><a href="${pageContext.request.contextPath}/Bookable/Update">UpdateBookable</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Bookable/Add">Add</a></li>
+                             <li><a href="${pageContext.request.contextPath}/Bookable/Select">Select</a></li>
+                          <li><a href="${pageContext.request.contextPath}/Bookable/Delete">Delete</a></li>
+                          <li><a href="${pageContext.request.contextPath}/Bookable/Update">Update</a></li>
                         <li><a href="${pageContext.request.contextPath}/Bookable/Show">Show All</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/Booking/CRUD">Crud</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Booking/CRUD">Add</a></li>
                         <li><a href="${pageContext.request.contextPath}/Booking/Delete">Delete</a></li>
                         <li><a href="${pageContext.request.contextPath}/Booking/Show">Show All</a></li>
                     </ul>
