@@ -198,7 +198,6 @@ public class DataPerson {
 			if(rs!=null && rs.next()){
 				p=buildPerson(rs);
 			}
-			
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw e;

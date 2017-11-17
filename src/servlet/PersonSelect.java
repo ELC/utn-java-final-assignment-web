@@ -27,17 +27,13 @@ public class PersonSelect extends HttpServlet {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 			Person p=new Person();
 			p.setDni(request.getParameter("Dni"));
-			
-			request.getSession().setAttribute("person",ctrlPer.getByDni(p));		
+			p = ctrlPer.getByDni(p);
+			if (p == null){
+				throw new Exception("User doesn't exist");			
+			}
+			request.getSession().setAttribute("person", p);		
 			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);			
-			
-		} 
-		
-		catch (SQLException e) {
-			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);
 		}

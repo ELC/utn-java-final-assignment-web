@@ -5,15 +5,17 @@
 
 <t:base>
     <jsp:body>
-    
-    <c:set var="person" value="${person}" />
-
-	<h2>Id : ${person.id} </h2>
-	<h2>Dni : ${person.dni}</h2>
-	<h2>Name : ${person.name}</h2>
-	<h2>Last_Name :	${person.lastName}</h2>
-	<h2>Email : ${person.email}</h2>
-	<h2>UserName : ${person.username}</h2>
-
+	    <c:if test="${person != null}">
+	    
+			<c:set var="person" value="${person}" />
+		
+			<h2>Id : ${person.id} </h2>
+			<h2>Dni : ${person.dni}</h2>
+			<h2>Name : ${person.name}</h2>
+			<h2>Last_Name :	${person.lastName}</h2>
+			<h2>Email : ${person.email}</h2>
+			<h2>UserName : ${person.username}</h2>
+			
+		</c:if>
     </jsp:body>
 </t:base>

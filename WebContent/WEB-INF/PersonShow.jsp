@@ -27,7 +27,14 @@
 				<td>${person.username}</td>
 				<td>${person.email}</td>
 				<td>${person.password}</td>
-				<td>${person.enabled}</td>
+				<td>
+				<c:if test="${person.enabled}">
+					&#10004;
+				</c:if>
+				<c:if test="${!person.enabled}">
+					&times;
+				</c:if>
+				</td>
 			</tr>
 	     	</c:forEach>
 	    </tbody>
