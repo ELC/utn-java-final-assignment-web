@@ -91,4 +91,9 @@ public class Person implements Serializable{
 	    return getPrivileges().contains(permission);
 	}
 
+	public int getIntPrivileges() {
+		return AccessLevel.combinePermissions(getPrivileges());
+	}
+	
+	
 }

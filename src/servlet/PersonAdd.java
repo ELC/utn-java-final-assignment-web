@@ -40,11 +40,11 @@ public class PersonAdd extends HttpServlet {
 			Person per=new Person();
 			String option= request.getParameter("Option");
 			
-			if (option.equals("true")) {
-				per.setEnabled(true);
+			if (option==null) {
+				per.setEnabled(false);
 			}
 			else {
-				per.setEnabled(false);
+				per.setEnabled(true);
 			}
 			
 			per.setName(request.getParameter("Name_Person"));
