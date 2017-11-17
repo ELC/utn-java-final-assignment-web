@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,16 +25,21 @@ public class PersonSelect extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
-	
-			String dni=request.getParameter("Dni");
+			Person p=new Person();
+			p.setDni(request.getParameter("Dni"));
 			
-			request.getSession().setAttribute("person",ctrlPer.getByDni(dni));
-				
-			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);			
+			request.getSession().setAttribute("person",ctrlPer.getByDni(p));		
+			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);			
 			
-		} catch (Exception e) {
+		} 
+		
+		catch (SQLException e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);
+		}
+		catch (Exception e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);
 		}
 
 	}

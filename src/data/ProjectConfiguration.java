@@ -18,7 +18,7 @@ import java.util.Properties;
 public class ProjectConfiguration {
 
 	private Logger logger = LogManager.getLogger(getClass());
-	private static String filename = "G:\\Repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
+	private static String filename = "C:\\Repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
 	private String filename2 = "C:\\repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
 	private static Map<String, String> properties = null; //Map <String, String,  es un diccionario//
 
