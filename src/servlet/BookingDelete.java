@@ -17,6 +17,7 @@ import entities.Person;
 import entities.Reservation;
 import logic.ControllerABMCReservation;
 import util.Emailer;
+import util.Token;
 
 @WebServlet({ "/Booking/Delete" })
 public class BookingDelete extends HttpServlet {
@@ -56,10 +57,8 @@ public class BookingDelete extends HttpServlet {
 			String validToken = (String) request.getSession().getAttribute("ValidToken");
 			
 			if (validToken == null) {
-				SecureRandom random = new SecureRandom();
-				byte bytes[] = new byte[20];
-				random.nextBytes(bytes);
-				String token = bytes.toString();
+				
+				String token = Token.create();
 				
 				request.getSession().setAttribute("token", token);
 				
