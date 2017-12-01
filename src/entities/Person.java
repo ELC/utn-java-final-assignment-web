@@ -81,4 +81,8 @@ public class Person implements Serializable{
 		this.privileges = AccessLevel.parsePermissions(privileges);
 	}
 
+	public boolean hasPermission(AccessLevel permission){ 
+	    return getPrivileges().contains(permission);
+	}
+
 }
