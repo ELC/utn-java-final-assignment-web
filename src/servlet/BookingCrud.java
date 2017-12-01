@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -85,18 +84,15 @@ public class BookingCrud extends HttpServlet {
 			String validToken = (String) request.getSession().getAttribute("ValidToken");
 			
 			if (validToken == null) {
-				String token = Token.create();
-				
-				request.getSession().setAttribute("token", token);
-				
 				Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
 				Bookable b = new Bookable();
 				b.setId(Integer.parseInt(request.getParameter("selectedType")));
-				
 				booking.setBookable(b);
 				booking.setDetail(request.getParameter("detail"));
-				
 				request.getSession().setAttribute("booking", booking);
+				
+				String token = Token.create();
+				request.getSession().setAttribute("token", token);
 				
 				Emailer.getInstance().send(user.getEmail(), "Confirm your booking", request.getRequestURL() + "?token=" + token);
 				request.getRequestDispatcher("/checkEmail.jsp").forward(request, response);

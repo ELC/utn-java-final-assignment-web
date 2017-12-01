@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.security.SecureRandom;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,16 +56,13 @@ public class BookingDelete extends HttpServlet {
 			String validToken = (String) request.getSession().getAttribute("ValidToken");
 			
 			if (validToken == null) {
+				Reservation re = new Reservation();
+				int id = Integer.parseInt(request.getParameter("id"));
+				re.setId(id);
+				request.getSession().setAttribute("re", re);
 				
 				String token = Token.create();
-				
 				request.getSession().setAttribute("token", token);
-				
-				int id = Integer.parseInt(request.getParameter("id"));
-				Reservation re = new Reservation();
-				re.setId(id);
-				
-				request.getSession().setAttribute("re", re);
 				
 				Emailer.getInstance().send(user.getEmail(), "Delete your booking", request.getRequestURL() + "?token=" + token);
 				request.getRequestDispatcher("/checkEmail.jsp").forward(request, response);
