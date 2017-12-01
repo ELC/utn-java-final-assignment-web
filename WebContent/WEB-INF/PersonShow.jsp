@@ -4,7 +4,7 @@
 
 <t:base>
     <jsp:body>
-	  <table class="table table-hover" style="width:1170px;margin-left:auto;margin-right:auto">
+	  <table class="table table-hover">
 	    <thead>
 	      <tr>
 	        <th>ID</th>

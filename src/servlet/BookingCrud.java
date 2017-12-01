@@ -35,7 +35,6 @@ public class BookingCrud extends HttpServlet {
 	        String tbs = request.getParameter("tb");
 	        
 	        if (tbs != null){
-	        	
 		        
 		        String date = request.getParameter("date");
 		        String time = request.getParameter("time");

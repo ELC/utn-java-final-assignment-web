@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import entities.Person;
 import logic.ControllerABMCPerson;
 
-@WebServlet({ "/Add/Person" })
-public class AddPerson extends HttpServlet {
+@WebServlet({ "/Person/Add" })
+public class PersonAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddPerson() {}
+    public PersonAdd() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/AddPerson.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/PersonAdd.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

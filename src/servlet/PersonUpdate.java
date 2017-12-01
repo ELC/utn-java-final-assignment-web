@@ -10,25 +10,37 @@ import javax.servlet.http.HttpServletResponse;
 import entities.Person;
 import logic.ControllerABMCPerson;
 
-@WebServlet({ "/Delete/Person" })
-public class DeletePerson extends HttpServlet {
+@WebServlet({ "/Person/Update" })
+public class PersonUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public DeletePerson() {}
+    public PersonUpdate() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/DeletePerson.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/PersonUpdate.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
-				
+			
+			String user=request.getParameter("User_Person");
+			String pass=request.getParameter("Password");
 			String dni=request.getParameter("Dni");
-			ctrlPer.DeletePerson(ctrlPer.getByDni(dni));
+			String name=request.getParameter("Name_Person");
+			String lastName=request.getParameter("Last_name_Person");
+			String email=request.getParameter("Email");
 			
 			
+				Person per=new Person();
+				per.setName(name);
+				per.setDni(dni);
+				per.setLastName(lastName);
+				per.setPassword(pass);
+				per.setUsername(user);
+				per.setEmail(email);
+				ctrlPer.ModifyPerson(per);
 	
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			
 			

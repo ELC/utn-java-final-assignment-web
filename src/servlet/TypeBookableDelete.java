@@ -7,29 +7,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entities.Bookable;
-import logic.ControllerABMCBookable;
+import entities.Person;
+import entities.TypeBookable;
+import logic.ControllerABMCPerson;
+import logic.ControllerABMCTypeBookable;
 
-
-@WebServlet({ "/Delete/Bookable" })
-public class DeleteBookable extends HttpServlet {
+@WebServlet({ "/TypeBookable/Delete" })
+public class TypeBookableDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public DeleteBookable() {}
+    public TypeBookableDelete() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/DeleteBookable.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/TypeBookableDelete.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			
-			ControllerABMCBookable ctrlBookable= new ControllerABMCBookable();
+			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 			String name=request.getParameter("Name");
-			Bookable b=new Bookable();
-			b.setName(name);
-			ctrlBookable.DeleteBookable(b);
+			TypeBookable t=new TypeBookable();
+			t.setName(name);
+			ctrlTypeBookable.DeleteTypeBookable(t);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 			
 		} catch (Exception e) {
@@ -38,3 +39,5 @@ public class DeleteBookable extends HttpServlet {
 		}
 	}
 }
+
+

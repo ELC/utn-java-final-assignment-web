@@ -12,18 +12,18 @@ import entities.TypeBookable;
 import logic.ControllerABMCBookable;
 import logic.ControllerABMCTypeBookable;
 
-@WebServlet({ "/Add/Bookable" })
-public class AddBookable extends HttpServlet {
+@WebServlet({ "/Bookable/Add" })
+public class BookableAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddBookable() {}
+    public BookableAdd() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll());
-			request.getRequestDispatcher("/WEB-INF/AddBookable.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/BookableAdd.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			

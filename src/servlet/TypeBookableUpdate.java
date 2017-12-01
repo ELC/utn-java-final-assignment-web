@@ -11,14 +11,14 @@ import entities.TypeBookable;
 
 import logic.ControllerABMCTypeBookable;
 
-@WebServlet({ "/Update/TypeBookable" })
-public class UpdateTypeBookable extends HttpServlet {
+@WebServlet({ "/TypeBookable/Update" })
+public class TypeBookableUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UpdateTypeBookable() {}
+    public TypeBookableUpdate() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/UpdateTypeBookable.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/TypeBookableUpdate.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
