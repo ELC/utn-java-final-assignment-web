@@ -23,19 +23,17 @@ public class TypeBookableDelete extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
-			
 			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 			String name=request.getParameter("Name");
 			TypeBookable t=new TypeBookable();
 			t.setName(name);
-			ctrlTypeBookable.DeleteTypeBookable(t);
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			ctrlTypeBookable.DeleteTypeBookable(t, (Person)request.getSession().getAttribute("user"));
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 		}
 	}
 }

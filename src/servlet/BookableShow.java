@@ -19,6 +19,10 @@ public class BookableShow extends HttpServlet {
     public BookableShow() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			ControllerABMCBookable ctrlBookable = new ControllerABMCBookable();
 			request.getSession().setAttribute("Bookables", ctrlBookable.GetAll());
@@ -27,9 +31,5 @@ public class BookableShow extends HttpServlet {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/BookableShow.jsp").forward(request, response);
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/BookableShow.jsp").forward(request, response);
 	}
 }

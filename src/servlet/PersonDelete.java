@@ -21,20 +21,17 @@ public class PersonDelete extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 				
 			String dni=request.getParameter("Dni");
-			ctrlPer.DeletePerson(ctrlPer.getByDni(dni));
+			ctrlPer.DeletePerson(ctrlPer.getByDni(dni), (Person)request.getSession().getAttribute("user"));
 			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);			
+			request.getRequestDispatcher("/Person/Show").forward(request, response);			
 			
 		} catch (Exception e) {
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}
-		
-		//request.getRequestDispatcher("/WEB-INF/PersonCrud.jsp").forward(request, response);
-		//request.getRequestDispatcher(destination).forward(request, response);
 	}
 }

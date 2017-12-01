@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logic.Application;
 import logic.ControllerABMCPerson;
 import entities.Person;
 
@@ -18,7 +17,7 @@ public class LogIn extends HttpServlet {
     public LogIn() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,9 +32,8 @@ public class LogIn extends HttpServlet {
 			ControllerABMCPerson ctrl= new ControllerABMCPerson();
 			
 			ctrl.LoginPerson(per);
-			Person pers=Application.getInstancia().getActivePerson();
 			
-			request.getSession().setAttribute("user", pers);
+			request.getSession().setAttribute("user", per);
 			
 			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);			
 			

@@ -67,7 +67,7 @@ public class BookingCrud extends HttpServlet {
 	        	forward = "/WEB-INF/BookingCrud.jsp";
 	        } else if (action.equalsIgnoreCase("delete")){
 	        	booking.setId(Integer.parseInt(request.getParameter("bookingId")));
-	        	ctrlRes.DeleteReservation(booking);   
+	        	ctrlRes.DeleteReservation(booking, (Person)request.getSession().getAttribute("user"));   
 	        } else if (action.equalsIgnoreCase("create")){
 	        	activeUser = (Person)request.getSession().getAttribute("user");
 	        	Bookable bookable = ctrlBook.getById(Integer.parseInt(request.getParameter("bookableId")));
@@ -75,7 +75,7 @@ public class BookingCrud extends HttpServlet {
 	        	booking.setPerson(activeUser);
 	        	booking.setDate(Timestamp.valueOf(request.getParameter("bookingDate")));
 	        	booking.setDetail(request.getParameter("bookingDetail"));
-	            ctrlRes.RegisterReservation(booking);
+	            ctrlRes.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
 	        }
 	        
 	        request.getRequestDispatcher(forward).forward(request, response);
@@ -95,7 +95,7 @@ public class BookingCrud extends HttpServlet {
 			b.setId(Integer.parseInt(request.getParameter("selectedType")));
 			booking.setBookable(b);
 			booking.setDetail("");
-			ctrlBooking.RegisterReservation(booking);
+			ctrlBooking.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
 			request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());

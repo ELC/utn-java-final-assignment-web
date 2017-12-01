@@ -9,12 +9,8 @@ import util.exceptions.LoginAppDataException;
 
 public class ControllerABMCPerson {
 	private DataPerson dataPer = new DataPerson();
-	private Application app = Application.getInstancia();
 	
 	public void LoginPerson(Person p) throws Exception{
-		if (!Application.getInstancia().isLoggedIn()){
-			throw new LoginAppDataException("Ya existe un usuario actualmente logeado");
-		}
 		Person per= dataPer.getByUsername(p);
 		if (per==null) {
 			throw new LoginAppDataException("Nombre de usuario Incorrecto");
@@ -25,29 +21,20 @@ public class ControllerABMCPerson {
 		if(!per.checkPassword(p)){
 			throw new LoginAppDataException("Contraseña Incorrecta");
 		}
-		Application.getInstancia().setActivePerson(per);
 	}
 	
-	
-	public void LogOutPerson() throws Exception{
-		Application.getInstancia().LogOutPerson();
-	}
-	
-	public void RegisterPerson(Person p)throws Exception{
-		//app.isLoggedIn();
-//		app.hasPermission(AccessLevel.CREATE_USER);
+	public void RegisterPerson(Person p, Person per)throws Exception{
+		per.hasPermission(AccessLevel.CREATE_USER);
 		dataPer.add(p);
 	}
 	
-	public void ModifyPerson(Person p)throws Exception{
-		//app.isLoggedIn();
-//		app.hasPermission(AccessLevel.MODIFY_USER);
+	public void ModifyPerson(Person p, Person per)throws Exception{
+		per.hasPermission(AccessLevel.MODIFY_USER);
 		dataPer.update(p);
 	}
 	
-	public void DeletePerson(Person p)throws Exception{
-//		app.isLoggedIn();
-//		app.hasPermission(AccessLevel.DELETE_USER);
+	public void DeletePerson(Person p, Person per)throws Exception{
+		per.hasPermission(AccessLevel.DELETE_USER);
 		dataPer.delete(p);
 	}
 

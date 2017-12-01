@@ -41,13 +41,13 @@ public class PersonAdd extends HttpServlet {
 			per.setPassword(pass);
 			per.setUsername(user);
 			per.setEmail(email);
-			ctrlPer.RegisterPerson(per);
+			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
 		
-			request.getRequestDispatcher("/Person/Show").forward(request, response);			
+			request.getRequestDispatcher("/Person/Show").forward(request, response);		
 				
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}
 	}
 }

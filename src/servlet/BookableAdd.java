@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Bookable;
+import entities.Person;
 import entities.TypeBookable;
 import logic.ControllerABMCBookable;
 import logic.ControllerABMCTypeBookable;
@@ -40,13 +41,14 @@ public class BookableAdd extends HttpServlet {
 			TypeBookable typeBookable = new TypeBookable();
 			typeBookable.setId(Integer.parseInt(request.getParameter("selectedType")));
 			bookable.setType(typeBookable);
-			ctrlBook.RegisterBookable(bookable);
+			ctrlBook.RegisterBookable(bookable, (Person)request.getSession().getAttribute("user"));
+			
 
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);			
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		}
 	}
 

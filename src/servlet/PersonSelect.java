@@ -21,23 +21,19 @@ public class PersonSelect extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 	
 			String dni=request.getParameter("Dni");
 			
-			
-				request.getSession().setAttribute("person",ctrlPer.getByDni(dni));
-		
+			request.getSession().setAttribute("person",ctrlPer.getByDni(dni));
 				
-			request.getRequestDispatcher("/WEB-INF/InfoPerson.jsp").forward(request, response);			
+			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);			
 			
 		} catch (Exception e) {
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
 		}
-		
-		//request.getRequestDispatcher("/WEB-INF/PersonCrud.jsp").forward(request, response);
-		//request.getRequestDispatcher(destination).forward(request, response);
+
 	}
 }

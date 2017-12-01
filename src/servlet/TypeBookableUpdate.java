@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities.Person;
 import entities.TypeBookable;
 
 import logic.ControllerABMCTypeBookable;
@@ -35,14 +36,13 @@ public class TypeBookableUpdate extends HttpServlet {
 			
 			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 			
-			ctrlTypeBookable.ModifyTypeBookable(t);
+			ctrlTypeBookable.ModifyTypeBookable(t, (Person)request.getSession().getAttribute("user"));
 			
-			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);			
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 		}
 	}
 

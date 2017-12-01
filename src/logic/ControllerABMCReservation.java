@@ -9,43 +9,25 @@ import data.DataReservation;
 import entities.*;
 
 public class ControllerABMCReservation {
-	private Application app = Application.getInstancia();
 	private DataReservation dataRes = new DataReservation();
 	
-	public void RegisterReservation(Reservation re)throws Exception{
-		//app.isLoggedIn();	
-//		app.hasPermission(AccessLevel.CREATE_RESERVATION);
+	public void RegisterReservation(Reservation re, Person per)throws Exception{
+		per.hasPermission(AccessLevel.CREATE_RESERVATION);
 		dataRes.add(re);
 	}
 	
-	public ArrayList<Reservation> getAllReservation()throws Exception{
-		app.isLoggedIn();
-//		app.hasPermission(AccessLevel.ACCESS_RESERVATION);
+	public ArrayList<Reservation> getAllReservation(Person per)throws Exception{
+		per.hasPermission(AccessLevel.READ_RESERVATION);
 		return dataRes.getAll();
 	}
-	
-	public List<Reservation> getAllByUser() throws Exception{
-		app.isLoggedIn();
-//		app.hasPermission(AccessLevel.DELETE_RESERVATION);
-		ArrayList<Reservation> reservations;
-		if (app.hasPermission(AccessLevel.READ_ALLBOOKING)){
-			reservations = (ArrayList<Reservation>) dataRes.getAll();
-		} else{
-			reservations = (ArrayList<Reservation>) dataRes.getByIdPerson(app.getActivePerson());
-		}
-		Timestamp now = new Timestamp((new Date()).getTime());
-		
-		reservations.removeIf(s -> s.getDate().before(now));
-		return reservations;		
-	}
-	
-	public List<Reservation> getAllByUser(Person p) throws Exception{
+
+	public List<Reservation> getAllByUser(Person per) throws Exception{
 
 		ArrayList<Reservation> reservations;
-		if (false){ // app.hasPermission(AccessLevel.READ_ALLBOOKING) revisar para web
+		if (per.hasPermission(AccessLevel.READ_ALLBOOKING)){
 			reservations = (ArrayList<Reservation>) dataRes.getAll();
 		} else{
-			reservations = (ArrayList<Reservation>) dataRes.getByIdPerson(p);
+			reservations = (ArrayList<Reservation>) dataRes.getByIdPerson(per);
 		}
 		Timestamp now = new Timestamp((new Date()).getTime());
 		
@@ -54,9 +36,8 @@ public class ControllerABMCReservation {
 	}
 	
 
-	public void DeleteReservation(Reservation re)throws Exception{
-		app.isLoggedIn();
-//		app.hasPermission(AccessLevel.DELETE_RESERVATION);
+	public void DeleteReservation(Reservation re, Person per)throws Exception{
+		per.hasPermission(AccessLevel.DELETE_RESERVATION);
 		dataRes.delete(re);
 	}
 }
