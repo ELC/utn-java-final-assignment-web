@@ -45,6 +45,8 @@ public class LogIn extends HttpServlet {
 
 			request.getSession().setAttribute("user", per);
 			
+			request.getSession().setAttribute("messageInfo", "Wellcome back!!");
+			
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			
 			
 		} catch (Exception e) {

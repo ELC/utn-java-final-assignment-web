@@ -80,6 +80,8 @@ public class BookingDelete extends HttpServlet {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Booking " + re.getId() + " has been deleted by " + user.getDni());
 			
+			request.getSession().setAttribute("messageSuccess", "Booking successfully deleted");
+			
 			request.getRequestDispatcher("/Booking/Show").forward(request, response);			
 			
 		} catch (Exception e) {
