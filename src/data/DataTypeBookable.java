@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+
 import entities.TypeBookable;
 import util.AppDataException;
 
@@ -146,7 +148,7 @@ public class DataTypeBookable {
 			stmt.setString(5, b.getName());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Tipo elemento inexistente");
+				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);
 			
 			}
 		} catch (AppDataException apd) {
@@ -169,7 +171,7 @@ public class DataTypeBookable {
 			stmt.setString(1, b.getName());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Tipo elemento inexistente");
+				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);
 			}	
 		} catch (AppDataException apd) {
 			throw apd;

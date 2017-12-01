@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import logic.ControllerABMCPerson;
 import entities.Person;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+
+
 @WebServlet({ "/LogIn", "/login" })
 public class LogIn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger logger = LogManager.getLogger(getClass());
 
     public LogIn() {}
 
@@ -22,6 +28,7 @@ public class LogIn extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+
 			String user=request.getParameter("user");
 			String pass=request.getParameter("pass");
 			
@@ -33,6 +40,8 @@ public class LogIn extends HttpServlet {
 			
 			per = ctrl.LoginPerson(per);
 			
+			logger.log(Level.INFO, "User " + per.getDni() + " has logged in");
+
 			request.getSession().setAttribute("user", per);
 			
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			

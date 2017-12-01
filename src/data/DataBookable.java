@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Level;
+
 import entities.Bookable;
 import entities.TypeBookable;
 import util.AppDataException;
@@ -210,7 +212,7 @@ public class DataBookable {
 			
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Elemento Inexistente");
+				throw new AppDataException(null, "Elemento Inexistente", Level.ERROR);
 			}	
 			
 		
@@ -226,7 +228,7 @@ public class DataBookable {
 		}
 	}
 
-	public void delete(Bookable b)throws Exception{
+	public void delete(Bookable b) throws Exception{
 		PreparedStatement stmt=null;
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
@@ -235,7 +237,7 @@ public class DataBookable {
 			stmt.setString(1, b.getName());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Elemento inexistente");
+				throw new AppDataException(null, "Elemento inexistente", Level.ERROR);
 			}	
 			
 		

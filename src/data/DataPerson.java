@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+
 import entities.Person;
 import entities.UserRole;
 import util.AppDataException;
@@ -266,7 +268,7 @@ public class DataPerson {
 			stmt.setString(1, p.getDni());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Persona inexistente");
+				throw new AppDataException(null, "Persona inexistente", Level.ERROR);
 			}
 			
 		
@@ -298,7 +300,7 @@ public class DataPerson {
 			
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Persona inexistente");
+				throw new AppDataException(null, "Persona inexistente", Level.ERROR);
 			}	
 		} catch (AppDataException e) {
 			throw e;
