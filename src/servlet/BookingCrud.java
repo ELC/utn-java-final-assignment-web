@@ -38,7 +38,7 @@ public class BookingCrud extends HttpServlet {
 			String token = (String)request.getParameter("token");
 			if (token != null) {
 				String storedToken = (String) request.getSession().getAttribute("token");
-				if (storedToken.equals(token)) {
+				if (token.equals(storedToken)) {
 					request.getSession().setAttribute("ValidToken", "1");
 					doPost(request, response);
 					return;

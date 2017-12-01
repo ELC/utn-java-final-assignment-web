@@ -33,7 +33,7 @@ public class BookingDelete extends HttpServlet {
 			String token = (String)request.getParameter("token");
 			if (token != null) {
 				String storedToken = (String) request.getSession().getAttribute("token");
-				if (storedToken.equals(token)) {
+				if (token.equals(storedToken)) {
 					request.getSession().setAttribute("ValidToken", "1");
 					doPost(request, response);
 					return;
@@ -72,6 +72,9 @@ public class BookingDelete extends HttpServlet {
 				request.getRequestDispatcher("/checkEmail.jsp").forward(request, response);
 				return;
 			}
+			
+			request.getSession().setAttribute("token", null);
+			request.getSession().setAttribute("validToken", null);
 			
 			Reservation re = (Reservation)request.getSession().getAttribute("re");
 			
