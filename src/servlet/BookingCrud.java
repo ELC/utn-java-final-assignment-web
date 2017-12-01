@@ -21,16 +21,13 @@ import entities.*;
 @WebServlet({ "/Booking/CRUD" })
 public class BookingCrud extends HttpServlet {
 	private static final long serialVersionUID = 3L;
-	private ControllerABMCReservation ctrlRes= new ControllerABMCReservation();
+	private ControllerABMCReservation ctrlBooking= new ControllerABMCReservation();
 	private ControllerABMCBookable ctrlBook = new ControllerABMCBookable();
-	private Person activeUser;
 
     public BookingCrud() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String forward = "/Booking/Show";
 		try{
-			String action = request.getParameter("action");	        
 	        Reservation booking = new Reservation();
 	        String tbs = request.getParameter("tb");
 	        
@@ -44,62 +41,39 @@ public class BookingCrud extends HttpServlet {
 		        LocalDateTime dt = LocalDateTime.of(LocalDate.parse(date), LocalTime.parse(time));
 		        Timestamp timestamp = Timestamp.valueOf(dt);
 		        booking.setDate(timestamp);
-		        Person p = new Person();
-		        p.setId(1);
-		        booking.setPerson(p);
+		        booking.setPerson((Person)request.getSession().getAttribute("user"));
 		        request.getSession().setAttribute("Booking", booking);
-	        	Integer tb = Integer.parseInt(tbs);
-	        	TypeBookable typeBookable = new TypeBookable();
-				typeBookable.setId(tb);
 				
-				ControllerABMCBookable ctrlBook= new ControllerABMCBookable();
-				List<Bookable> l = ctrlBook.getAllAvailable(typeBookable, timestamp);
-	        	request.getSession().setAttribute("ListBookables", l);
+				TypeBookable typeBookable = new TypeBookable();
+				typeBookable.setId(Integer.parseInt(tbs));
+				
+	        	request.getSession().setAttribute("ListBookables", ctrlBook.getAllAvailable(typeBookable, timestamp));
 	        	
-	        	forward = "/WEB-INF/BookingCrud2.jsp";
-	        	request.getRequestDispatcher(forward).forward(request, response);
+	        	request.getRequestDispatcher("/WEB-INF/BookingCrud2.jsp").forward(request, response);
 	        	return;
 	        }
 	        
-	        if (action == null){
-	        	ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
-				request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll());
-	        	forward = "/WEB-INF/BookingCrud.jsp";
-	        } else if (action.equalsIgnoreCase("delete")){
-	        	booking.setId(Integer.parseInt(request.getParameter("bookingId")));
-	        	ctrlRes.DeleteReservation(booking, (Person)request.getSession().getAttribute("user"));   
-	        } else if (action.equalsIgnoreCase("create")){
-	        	activeUser = (Person)request.getSession().getAttribute("user");
-	        	Bookable bookable = ctrlBook.getById(Integer.parseInt(request.getParameter("bookableId")));
-	        	booking.setBookable(bookable);
-	        	booking.setPerson(activeUser);
-	        	booking.setDate(Timestamp.valueOf(request.getParameter("bookingDate")));
-	        	booking.setDetail(request.getParameter("bookingDetail"));
-	            ctrlRes.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
-	        }
-	        
-	        request.getRequestDispatcher(forward).forward(request, response);
-	        
+	        ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
+			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll());        	
+	        request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher(forward).forward(request, response);
+			request.getRequestDispatcher("/Booking/Show").forward(request, response);
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String forward = "/Booking/BookingCrud";
 		try{
-			ControllerABMCReservation ctrlBooking = new ControllerABMCReservation();
 			Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
 			Bookable b = new Bookable();
 			b.setId(Integer.parseInt(request.getParameter("selectedType")));
 			booking.setBookable(b);
 			booking.setDetail("");
 			ctrlBooking.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
-			request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
+			request.getRequestDispatcher("/Booking/Show").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
-			request.getRequestDispatcher(forward).forward(request, response);
+			request.getRequestDispatcher("/Booking/Show").forward(request, response);
 		}
 	}
 }

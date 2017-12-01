@@ -10,7 +10,7 @@ import util.exceptions.LoginAppDataException;
 public class ControllerABMCPerson {
 	private DataPerson dataPer = new DataPerson();
 	
-	public void LoginPerson(Person p) throws Exception{
+	public Person LoginPerson(Person p) throws Exception{
 		Person per= dataPer.getByUsername(p);
 		if (per==null) {
 			throw new LoginAppDataException("Nombre de usuario Incorrecto");
@@ -21,6 +21,7 @@ public class ControllerABMCPerson {
 		if(!per.checkPassword(p)){
 			throw new LoginAppDataException("Contraseña Incorrecta");
 		}
+		return per;
 	}
 	
 	public void RegisterPerson(Person p, Person per)throws Exception{

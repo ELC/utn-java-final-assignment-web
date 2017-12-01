@@ -7,7 +7,6 @@
 <t:base>
     <jsp:body>
 		<form name="AddBooking" action="${pageContext.request.contextPath}/Booking/CRUD" method="POST">
-        	
             <select style="width : 143px" name="selectedType" >
             	<c:forEach var="b" items="${ListBookables}">
 					<option value="${b.id}" >

@@ -49,6 +49,9 @@ public class Person implements Serializable{
 	public void setUsername(String username) {
 		this.username = Util.hash(username);
 	}
+	public void setUsername2(String username) {
+		this.username = username;
+	}
 	public boolean checkUserName(Person p){
 		return Objects.equals(this.getUsername(), Util.hash(p.getUsername()));
 	}
@@ -64,8 +67,11 @@ public class Person implements Serializable{
 	public void setPassword(String password) {
 		this.password = Util.hash(password);
 	}
+	public void setPassword2(String password) {
+		this.password = password;
+	}
 	public boolean checkPassword(Person p){
-		return Objects.equals(this.getPassword(), Util.hash(p.getPassword()));
+		return Objects.equals(this.getPassword(), p.getPassword());
 	}
 	public boolean isEnabled() {
 		return enabled;

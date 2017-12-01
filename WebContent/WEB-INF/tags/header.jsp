@@ -51,10 +51,19 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            
+            <% if (session.getAttribute("user") == null) { %>
+				<ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="#" data-toggle="modal" data-target="#login-modal">Log In<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+			<% } else {%>
+				<ul class="nav navbar-nav navbar-right">
+	                <li class="active"><a href="${pageContext.request.contextPath}/logout">Log Out<span class="sr-only">(current)</span></a></li>
+            	</ul>
+			<%}%>
+            
+            
         </div>
         <!--/.nav-collapse -->
     </div>

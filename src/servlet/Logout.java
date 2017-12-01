@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logic.ControllerABMCPerson;
-import entities.Person;
-
-@WebServlet({ "/LogIn", "/login" })
-public class LogIn extends HttpServlet {
+@WebServlet({ "/LogOut", "/logout" })
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LogIn() {}
+    public Logout() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -22,21 +19,8 @@ public class LogIn extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String user=request.getParameter("user");
-			String pass=request.getParameter("pass");
-			
-			Person per=new Person();
-			per.setUsername(user);
-			per.setPassword(pass);
-			
-			ControllerABMCPerson ctrl= new ControllerABMCPerson();
-			
-			per = ctrl.LoginPerson(per);
-			
-			request.getSession().setAttribute("user", per);
-			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);			
-			
+			request.getSession().invalidate();
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

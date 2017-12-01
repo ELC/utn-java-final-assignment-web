@@ -24,23 +24,15 @@ public class PersonAdd extends HttpServlet {
 		
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
-			
-			String user=request.getParameter("User_Person");
-			String pass=request.getParameter("Password");
-			String dni=request.getParameter("Dni");
-			String name=request.getParameter("Name_Person");
-			String lastName=request.getParameter("Last_name_Person");
-			String email=request.getParameter("Email");
-			
-			
+
 			Person per=new Person();
-			//per.setId(Integer.parseInt(id));
-			per.setName(name);
-			per.setDni(dni);
-			per.setLastName(lastName);
-			per.setPassword(pass);
-			per.setUsername(user);
-			per.setEmail(email);
+
+			per.setName(request.getParameter("Name_Person"));
+			per.setDni(request.getParameter("Dni"));
+			per.setLastName(request.getParameter("Last_name_Person"));
+			per.setPassword(request.getParameter("Password"));
+			per.setUsername(request.getParameter("User_Person"));
+			per.setEmail(request.getParameter("Email"));
 			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
 		
 			request.getRequestDispatcher("/Person/Show").forward(request, response);		

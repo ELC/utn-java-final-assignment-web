@@ -10,6 +10,7 @@ import java.util.List;
 import entities.Person;
 import entities.UserRole;
 import util.AppDataException;
+import util.Util;
 import data.DataUserRoles;
 
 public class DataPerson {
@@ -22,9 +23,9 @@ public class DataPerson {
 			p.setLastName(rs.getString("last_name_person"));
 			p.setDni(rs.getString("dni"));
 			p.setEnabled(rs.getBoolean("enable_person"));
-			p.setUsername(rs.getString("user_person"));
+			p.setUsername2(rs.getString("user_person"));
 			p.setEmail(rs.getString("email"));
-			p.setPassword(rs.getString("password_person"));
+			p.setPassword2(rs.getString("password_person"));
 			UserRole user_role = DataUserRoles.getById(rs.getInt("privileges"));
 			p.setPrivileges(user_role.getPrivileges());
 		} catch (Exception e) {
@@ -149,7 +150,7 @@ public class DataPerson {
 		try {
 			stmt=FactoryConection.getInstancia().getConn().prepareStatement(
 					"select * from person where user_person=?");
-			stmt.setString(1,per.getUsername());
+			stmt.setString(1, per.getUsername());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){
 				p=buildPerson(rs);
