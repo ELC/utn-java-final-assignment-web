@@ -46,6 +46,6 @@
         </div>
     </div>
     <div class="footer-copyright">
-        <p>2017 - Universidad Tecnológica Nacional Facultad Regional Rosario - UTN FRRO - Castaño Ezequiel, Mulassi Matías, Sacchi Priscila</p>
+        <p>2017 - Universidad Tecnológica Nacional Facultad Regional Rosario - UTN FRRO - Castaño Ezequiel, Mulassi Matías</p>
     </div>
 </footer>
