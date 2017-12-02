@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 import logic.ControllerABMCBookable;
 import logic.ControllerABMCReservation;
 import logic.ControllerABMCTypeBookable;
+import util.Emailer;
 import entities.*;
 
 @WebServlet({ "/Booking/CRUD" })
@@ -31,6 +33,19 @@ public class BookingCrud extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
+			
+			String token = (String)request.getParameter("token");
+			if (token != null) {
+				String storedToken = (String) request.getSession().getAttribute("token");
+				if (storedToken.equals(token)) {
+					request.getSession().setAttribute("ValidToken", "1");
+					doPost(request, response);
+					return;
+				} else {
+					throw new Exception("Invalid Token");
+				}
+			}			
+			
 	        Reservation booking = new Reservation();
 	        String tbs = request.getParameter("tb");
 	        String date = request.getParameter("date");
@@ -64,14 +79,39 @@ public class BookingCrud extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
-			Bookable b = new Bookable();
-			b.setId(Integer.parseInt(request.getParameter("selectedType")));
-			booking.setBookable(b);
-			booking.setDetail("");
-			ctrlBooking.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
-			
 			Person user = (Person)request.getSession().getAttribute("user");
+			
+			String validToken = (String) request.getSession().getAttribute("ValidToken");
+			
+			if (validToken == null) {
+				SecureRandom random = new SecureRandom();
+				byte bytes[] = new byte[20];
+				random.nextBytes(bytes);
+				String token = bytes.toString();
+				
+				request.getSession().setAttribute("token", token);
+				
+				Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
+				Bookable b = new Bookable();
+				b.setId(Integer.parseInt(request.getParameter("selectedType")));
+				
+				booking.setBookable(b);
+				booking.setDetail("");				
+				
+				request.getSession().setAttribute("booking", booking);
+				
+				Emailer.getInstance().send(user.getEmail(), "Confirm your booking", request.getRequestURL() + "?token=" + token);
+				request.getRequestDispatcher("/checkEmail.jsp").forward(request, response);
+				return;
+			}
+			
+			request.getSession().setAttribute("token", null);
+			request.getSession().setAttribute("validToken", null);
+			
+			Reservation booking = (Reservation)request.getSession().getAttribute("booking");
+			
+			ctrlBooking.RegisterReservation(booking, user);
+			
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Booking ID: " + booking.getId() + " has been made by " + user.getDni());
 			

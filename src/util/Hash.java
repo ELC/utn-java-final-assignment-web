@@ -5,9 +5,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 
-public class Util {
+public class Hash {
 
-	public static String hash(String password){
+	public static String sha1(String password){
 	    String sha1 = "";
 	    try{
 	        MessageDigest crypt = MessageDigest.getInstance("SHA-1");

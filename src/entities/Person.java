@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import entities.AccessLevel;
-import util.Util;
+import util.Hash;
 
 public class Person implements Serializable{
 	
@@ -47,13 +47,13 @@ public class Person implements Serializable{
 		return username;
 	}
 	public void setUsername(String username) {
-		this.username = Util.hash(username);
+		this.username = Hash.sha1(username);
 	}
 	public void setUsername2(String username) {
 		this.username = username;
 	}
 	public boolean checkUserName(Person p){
-		return Objects.equals(this.getUsername(), Util.hash(p.getUsername()));
+		return Objects.equals(this.getUsername(), Hash.sha1(p.getUsername()));
 	}
 	public String getEmail() {
 		return email;
@@ -65,7 +65,7 @@ public class Person implements Serializable{
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = Util.hash(password);
+		this.password = Hash.sha1(password);
 	}
 	public void setPassword2(String password) {
 		this.password = password;

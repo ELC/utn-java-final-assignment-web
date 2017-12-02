@@ -341,8 +341,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="41" language="java" name="util.Util" project="Java Assignment version Web" 
-    file="/Java Assignment version Web/src/util/Util.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="41" language="java" name="util.Hash" project="Java Assignment version Web" 
+    file="/Java Assignment version Web/src/util/Hash.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="465" y="1990"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

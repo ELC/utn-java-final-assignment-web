@@ -76,12 +76,38 @@ public class ProjectConfiguration {
 	private void resetProperties(){
 		properties = new Hashtable<String, String>();
 	}
+	
+	public Properties getProperties() throws Exception {
+		
+		Properties prop = new Properties();
+		InputStream input = null;
+		
+		try {
+			input = new FileInputStream(filename);
+
+			prop.load(input);
+			
+			return prop;
+
+		} catch (IOException ex) {
+			logger.log(Level.ERROR, ex.getMessage());
+			throw ex;
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					logger.log(Level.ERROR, e.getMessage());
+					throw e;
+				}
+			}
+		}
+	}
 
 	private void loadProperties() throws Exception {
 
 		Properties prop = new Properties();
 		InputStream input = null;
-
 
 		try {
 			input = new FileInputStream(filename);

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logic.ControllerABMCPerson;
+import util.Emailer;
 import entities.Person;
 
 import org.apache.logging.log4j.LogManager;

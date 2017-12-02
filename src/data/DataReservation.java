@@ -37,7 +37,7 @@ public class DataReservation {
 		ArrayList<Reservation> res= new ArrayList<Reservation>();
 		try{
 			stmt= FactoryConection.getInstancia().getConn().createStatement();
-			rs=stmt.executeQuery("Select * from reservation");
+			rs=stmt.executeQuery("Select * from reservation order by dateTimeReservation");
 			if(rs!=null){
 				while(rs.next()){
 					Reservation re = buildReservation(rs);
@@ -99,7 +99,7 @@ public class DataReservation {
 		ResultSet rs=null;
 		try {
 			stmt=FactoryConection.getInstancia().getConn().prepareStatement(
-					"select * from Reservation where id_person=?");
+					"select * from Reservation where id_person=?  order by dateTimeReservation");
 			stmt.setInt(1, p.getId());
 			rs=stmt.executeQuery();
 			if(rs!=null){
