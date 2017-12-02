@@ -13,7 +13,8 @@
 						${b.name}
 					</option>
 	     		</c:forEach>
-            </select>			
+            </select>
+            <input name="detail" id="detail" class="form-control" placeholder="Booking Detail" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
         	<button class="btn btn-lg btn-primary btn-block" type="submit">add Booking</button>        
     	</form>
     </jsp:body>

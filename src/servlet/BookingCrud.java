@@ -96,7 +96,7 @@ public class BookingCrud extends HttpServlet {
 				b.setId(Integer.parseInt(request.getParameter("selectedType")));
 				
 				booking.setBookable(b);
-				booking.setDetail("");				
+				booking.setDetail(request.getParameter("detail"));
 				
 				request.getSession().setAttribute("booking", booking);
 				

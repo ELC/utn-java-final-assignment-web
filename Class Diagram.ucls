@@ -278,16 +278,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="34" language="java" name="servlet.BookableCrud" project="Java Assignment version Web" 
-    file="/Java Assignment version Web/src/servlet/BookableCrud.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="214" y="1662"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="35" language="java" name="servlet.BookableShow" project="Java Assignment version Web" 
+  <class id="34" language="java" name="servlet.BookableShow" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/BookableShow.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="223" y="1371"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -296,7 +287,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="36" language="java" name="servlet.TypeBookableUpdate" project="Java Assignment version Web" 
+  <class id="35" language="java" name="servlet.TypeBookableUpdate" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/TypeBookableUpdate.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="537" y="1513"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -305,7 +296,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="37" language="java" name="servlet.TypeBookableAdd" project="Java Assignment version Web" 
+  <class id="36" language="java" name="servlet.TypeBookableAdd" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/TypeBookableAdd.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="533" y="1661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -314,7 +305,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="38" language="java" name="servlet.PersonUpdate" project="Java Assignment version Web" 
+  <class id="37" language="java" name="servlet.PersonUpdate" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/PersonUpdate.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1178" y="1671"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -323,7 +314,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="39" language="java" name="servlet.TypeBookableShow" project="Java Assignment version Web" 
+  <class id="38" language="java" name="servlet.TypeBookableShow" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/TypeBookableShow.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="537" y="1362"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -332,7 +323,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="40" language="java" name="servlet.PersonShow" project="Java Assignment version Web" 
+  <class id="39" language="java" name="servlet.PersonShow" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/PersonShow.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1174" y="1380"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -341,7 +332,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="41" language="java" name="util.Hash" project="Java Assignment version Web" 
+  <class id="40" language="java" name="util.Hash" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/util/Hash.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="465" y="1990"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -350,12 +341,12 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="42" language="java" name="util.exceptions" project="Java Assignment version Web" 
+  <package id="41" language="java" name="util.exceptions" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/util/exceptions" binary="false" corner="BOTTOM_RIGHT">    
     <position height="253" width="586" x="564" y="1860"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="43" language="java" name="util.exceptions.AppDataException" project="Java Assignment version Web" 
+  <class id="42" language="java" name="util.exceptions.AppDataException" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/util/exceptions/AppDataException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="712" y="2007"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -364,7 +355,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="44" language="java" name="util.exceptions.LoginAppDataException" project="Java Assignment version Web" 
+  <class id="43" language="java" name="util.exceptions.LoginAppDataException" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/util/exceptions/LoginAppDataException.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="993" y="2007"/>    
@@ -374,7 +365,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="45" language="java" name="servlet.BookingCrud" project="Java Assignment version Web" 
+  <class id="44" language="java" name="servlet.BookingCrud" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/servlet/BookingCrud.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="860" y="1055"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -383,138 +374,138 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="46">    
+  <association id="45">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="47" name="instance">        
+      <attribute id="46" name="instance">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1">        
+      <multiplicity id="47" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="49">    
+  <association id="48">    
     <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="50" name="type">        
+      <attribute id="49" name="type">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="51" minimum="0" maximum="1">        
+      <multiplicity id="50" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="52">    
+  <association id="51">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="53" name="pConf">        
+      <attribute id="52" name="pConf">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
+      <multiplicity id="53" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="55">    
+  <association id="54">    
     <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="56" name="dataPer">        
+      <attribute id="55" name="dataPer">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="57" minimum="0" maximum="1">        
+      <multiplicity id="56" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="58">    
+  <association id="57">    
     <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="59" name="dataTypeBookable">        
+      <attribute id="58" name="dataTypeBookable">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="60" minimum="0" maximum="1">        
+      <multiplicity id="59" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="61">    
+  <association id="60">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="62" name="dataBookable">        
+      <attribute id="61" name="dataBookable">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="63" minimum="0" maximum="1">        
+      <multiplicity id="62" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="64">    
+  <association id="63">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="65" name="privileges">        
+      <attribute id="64" name="privileges">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="66" minimum="0" maximum="2147483647">        
+      <multiplicity id="65" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="67">    
+  <association id="66">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="68" name="dataRes">        
+      <attribute id="67" name="dataRes">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="69" minimum="0" maximum="1">        
+      <multiplicity id="68" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="70">    
+  <association id="69">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="71" name="bookable">        
+      <attribute id="70" name="bookable">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
+      <multiplicity id="71" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="74" name="ctrlBooking"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
+  <association id="72">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="73" name="ctrlBooking"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="76">    
+  <association id="75">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="77" name="person">        
+      <attribute id="76" name="person">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="78" minimum="0" maximum="1">        
+      <multiplicity id="77" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="79">    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="80" name="ctrlBook"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+  <association id="78">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="79" name="ctrlBook"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
