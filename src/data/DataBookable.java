@@ -8,12 +8,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import entities.Bookable;
 import entities.TypeBookable;
 import util.AppDataException;
 
 public class DataBookable {
+	private Logger logger = LogManager.getLogger(getClass());
 	
 	public static Bookable buildBookable(ResultSet rs) throws SQLException{
 		Bookable b= new Bookable();
@@ -38,6 +41,7 @@ public class DataBookable {
 				}			
 			}
 		} catch(SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;			
 		} finally {	
 			try {
@@ -45,7 +49,8 @@ public class DataBookable {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return bookables;
@@ -64,6 +69,7 @@ public class DataBookable {
 				b=buildBookable(rs);
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -71,7 +77,8 @@ public class DataBookable {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return b;
@@ -99,6 +106,7 @@ public class DataBookable {
 				b.setName(rs.getString("name_bookable"));
 			}
 		} catch (Exception e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -106,7 +114,8 @@ public class DataBookable {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return b;
@@ -125,6 +134,7 @@ public class DataBookable {
 					b=buildBookable(rs);
 				}
 			} catch (Exception e) {
+				logger.log(Level.ERROR, e.getMessage());
 				throw e;
 			} finally {	
 				try {
@@ -132,7 +142,8 @@ public class DataBookable {
 					if(stmt!=null) stmt.close();
 					FactoryConection.getInstancia().releaseConn();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					logger.log(Level.ERROR, e.getMessage());
+					throw e;
 				}
 			}	
 			return b;
@@ -155,6 +166,7 @@ public class DataBookable {
 				}			
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -162,7 +174,8 @@ public class DataBookable {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return bookables;
@@ -186,6 +199,7 @@ public class DataBookable {
 			}
 			
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
@@ -195,7 +209,8 @@ public class DataBookable {
 				}
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}	
 		}
 	}
@@ -213,9 +228,7 @@ public class DataBookable {
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "Elemento Inexistente", Level.ERROR);
-			}	
-			
-		
+			}		
 		} catch (AppDataException apd) {
 			throw apd;
 		} finally {
@@ -223,7 +236,8 @@ public class DataBookable {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}
@@ -238,9 +252,7 @@ public class DataBookable {
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "Elemento inexistente", Level.ERROR);
-			}	
-			
-		
+			}
 		} catch (AppDataException apd) {
 			throw apd;
 		} finally {
@@ -248,7 +260,8 @@ public class DataBookable {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 			
@@ -291,6 +304,7 @@ public class DataBookable {
 				}
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -298,7 +312,8 @@ public class DataBookable {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {			
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return bookables;

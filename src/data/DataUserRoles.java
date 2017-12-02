@@ -6,13 +6,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.mysql.jdbc.PreparedStatement;
 
 import entities.UserRole;
 
 public class DataUserRoles {
 	
-	private static UserRole buildUserRole(ResultSet rs) throws SQLException{
+	private Logger logger = LogManager.getLogger(getClass());
+	
+	private UserRole buildUserRole(ResultSet rs) throws SQLException{
 		UserRole ur=new UserRole();
 		ur.setId(rs.getInt("id_user_roles"));
 		ur.setName(rs.getString("name_user_roles"));
@@ -20,7 +26,7 @@ public class DataUserRoles {
 		return ur;
 	}
 	
-	public static ArrayList<UserRole> getAll(){
+	public ArrayList<UserRole> getAll() throws Exception{
 		ArrayList<UserRole> userRoles= new ArrayList<UserRole>();
 		try{
 			Statement stmt = FactoryConection.getInstancia().getConn().createStatement();
@@ -32,12 +38,13 @@ public class DataUserRoles {
 				}			
 			}
 		} catch(SQLException e) {
-			e.printStackTrace();			
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;		
 		}
 		return userRoles;
 	}
 	
-	public static UserRole getById(int id){
+	public UserRole getById(int id) throws Exception{
 		UserRole ur = null;
 		java.sql.PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -50,16 +57,17 @@ public class DataUserRoles {
 				ur = buildUserRole(rs);	
 			}
 		} catch(SQLException e) {
-			e.printStackTrace();			
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;		
 		}
 		return ur;
 	}
 	
-	public static List<UserRole> getAllByPermission(int permission){
+	public List<UserRole> getAllByPermission(int permission){
 		return null;
 	}
 	
-	public static UserRole getByName(String name){
+	public UserRole getByName(String name){
 		return null;
 	}
 

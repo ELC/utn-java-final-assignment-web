@@ -8,14 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import entities.Person;
 import entities.UserRole;
 import util.AppDataException;
-import util.Util;
 import data.DataUserRoles;
 
 public class DataPerson {
+	private Logger logger = LogManager.getLogger(getClass());
 	
 	private Person buildPerson(ResultSet rs) throws Exception{
 			Person p = new Person();
@@ -28,9 +30,11 @@ public class DataPerson {
 			p.setUsername2(rs.getString("user_person"));
 			p.setEmail(rs.getString("email"));
 			p.setPassword2(rs.getString("password_person"));
-			UserRole user_role = DataUserRoles.getById(rs.getInt("privileges"));
+			DataUserRoles ctrlRoles = new DataUserRoles();
+			UserRole user_role = ctrlRoles.getById(rs.getInt("privileges"));
 			p.setPrivileges(user_role.getPrivileges());
 		} catch (Exception e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		}
 		return p;
@@ -50,13 +54,15 @@ public class DataPerson {
 				}			
 			}
 		} catch(SQLException e) {
-			throw e;		
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;	
 		} finally {
 			try {
 				if(rs!=null) rs.close();
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {	
+				logger.log(Level.ERROR, e.getMessage());
 				throw e;
 			}
 		}
@@ -77,8 +83,10 @@ public class DataPerson {
 			}
 			
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} catch(Exception e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -86,7 +94,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return p;
@@ -105,6 +114,7 @@ public class DataPerson {
 				p=buildPerson(rs);
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
@@ -112,7 +122,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return p;
@@ -132,14 +143,16 @@ public class DataPerson {
 				}			
 			}
 		} catch(SQLException e) {
-			throw e;		
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;
 		} finally	{	
 			try {
 				if(rs!=null) rs.close();
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {	
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return pers;
@@ -158,6 +171,7 @@ public class DataPerson {
 				p=buildPerson(rs);
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -165,7 +179,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 		return p;
@@ -185,6 +200,7 @@ public class DataPerson {
 			}
 			
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
@@ -192,7 +208,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return p;
@@ -212,6 +229,7 @@ public class DataPerson {
 			}
 			
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
@@ -219,7 +237,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return p;
@@ -247,6 +266,7 @@ public class DataPerson {
 				p.setId(keyResultSet.getInt(1));
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally{
 			try {
@@ -254,7 +274,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}
@@ -279,7 +300,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 	}
@@ -309,7 +331,8 @@ public class DataPerson {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}

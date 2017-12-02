@@ -8,68 +8,76 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Properties;
 
 public class ProjectConfiguration {
 
+	private Logger logger = LogManager.getLogger(getClass());
 	private static String filename = "G:\\Repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
-	private static String filename2 = "C:\\repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
+	private String filename2 = "C:\\repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
 	private static Map<String, String> properties = null; //Map <String, String,  es un diccionario//
 
-	public static void setProperty(String key, String value) {
-		if (ProjectConfiguration.properties == null) {
-			ProjectConfiguration.resetProperties();
+	public void setProperty(String key, String value) {
+		if (properties == null) {
+			resetProperties();
 		}
-		ProjectConfiguration.properties.put(key, value);
+		properties.put(key, value);
 	}
 
-	public static String getProperty(String key) {
-		if (ProjectConfiguration.properties == null){
-			ProjectConfiguration.loadProperties();
+	public String getProperty(String key) throws Exception {
+		if (properties == null){
+			loadProperties();
 		}
 
-		return ProjectConfiguration.properties.get(key);
+		return properties.get(key);
 	}
 
-	public static void storeProperties() {
+	public void storeProperties() throws Exception {
 		Properties prop = new Properties();
 		OutputStream output = null;
 
 		try {
 			output = new FileOutputStream(filename);
 
-			for (Map.Entry<String, String> entry : ProjectConfiguration.properties.entrySet())
+			for (Map.Entry<String, String> entry : properties.entrySet())
 			{
 				prop.setProperty(entry.getKey(), entry.getValue());
 			}
 
 			prop.store(output, null);
 
-			ProjectConfiguration.flushProperties();
+			flushProperties();
 
 		} catch (IOException io) {
-			io.printStackTrace();
+			logger.log(Level.ERROR, io.getMessage());
+			throw io;
 		} finally {
 			if (output != null) {
 				try {
 					output.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.log(Level.ERROR, e.getMessage());
+					throw e;
 				}
 			}
 
 		}
 	  }
 
-	public static void flushProperties(){
-		ProjectConfiguration.properties = null;
+	public void flushProperties(){
+		properties = null;
 	}
 
-	private static void resetProperties(){
-		ProjectConfiguration.properties = new Hashtable<String, String>();
+	private void resetProperties(){
+		properties = new Hashtable<String, String>();
 	}
 
-	private static void loadProperties() {
+	private void loadProperties() throws Exception {
 
 		Properties prop = new Properties();
 		InputStream input = null;
@@ -80,7 +88,7 @@ public class ProjectConfiguration {
 
 			prop.load(input);
 
-			ProjectConfiguration.resetProperties();
+			resetProperties();
 
 
 			for (Entry<Object, Object> entry : prop.entrySet())
@@ -92,13 +100,15 @@ public class ProjectConfiguration {
 			}
 
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			logger.log(Level.ERROR, ex.getMessage());
+			throw ex;
 		} finally {
 			if (input != null) {
 				try {
 					input.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.log(Level.ERROR, e.getMessage());
+					throw e;
 				}
 			}
 		}

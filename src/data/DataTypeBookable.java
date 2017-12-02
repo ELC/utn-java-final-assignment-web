@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import entities.TypeBookable;
 import util.AppDataException;
 
 public class DataTypeBookable {
+	
+	private Logger logger = LogManager.getLogger(getClass());
 	
 	private static TypeBookable buildTypeBookable(ResultSet rs) throws SQLException{
 		TypeBookable tb= new TypeBookable();
@@ -38,15 +42,15 @@ public class DataTypeBookable {
 				}			
 			}
 		} catch(Exception e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;			
-		}
-		
-		finally {
+		} finally {
 			try {
 				if(rs!=null) rs.close();
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {	
+				logger.log(Level.ERROR, e.getMessage());
 				throw e;
 			}
 		}
@@ -86,6 +90,7 @@ public class DataTypeBookable {
 			}
 			
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
@@ -93,7 +98,8 @@ public class DataTypeBookable {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return t;
@@ -119,18 +125,19 @@ public class DataTypeBookable {
 				b.setId(keyResultSet.getInt(1));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {
 			try {
 				if(keyResultSet!=null) {keyResultSet.close();}
 					if (stmt!=null){
-									stmt.close();
+						stmt.close();
 					}
 					FactoryConection.getInstancia().releaseConn();
 			} 
 			catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}	
 		}
 	}
@@ -158,7 +165,8 @@ public class DataTypeBookable {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}
@@ -180,7 +188,8 @@ public class DataTypeBookable {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}

@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Person;
 import entities.Reservation;
 
 public class DataReservation {
+	
+	private Logger logger = LogManager.getLogger(getClass());
 	
 	private Reservation buildReservation(ResultSet rs) throws Exception{
 		DataPerson dataPer= new DataPerson();
@@ -39,6 +45,7 @@ public class DataReservation {
 				}			
 			}
 		} catch(SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally{	
 			try {
@@ -46,7 +53,8 @@ public class DataReservation {
 				if(stmt!=null) stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {	
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return res;
@@ -71,14 +79,16 @@ public class DataReservation {
 				re.setId(keyResultSet.getInt(1));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;
 		} finally {	
 			try {
 				if(keyResultSet!=null)keyResultSet.close();
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}
@@ -99,6 +109,7 @@ public class DataReservation {
 				}
 			}
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally {	
 			try {
@@ -106,7 +117,8 @@ public class DataReservation {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}	
 		return res;
@@ -121,13 +133,15 @@ public class DataReservation {
 			stmt.setInt(1, re.getId());
 			stmt.executeUpdate();		
 		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		} finally{	
 			try {
 				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
 			}
 		}
 	}

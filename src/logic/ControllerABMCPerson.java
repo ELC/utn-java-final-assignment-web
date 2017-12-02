@@ -2,6 +2,8 @@ package logic;
 
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+
 import data.DataPerson;
 import entities.*;
 import util.exceptions.LoginAppDataException;
@@ -13,13 +15,13 @@ public class ControllerABMCPerson {
 	public Person LoginPerson(Person p) throws Exception{
 		Person per= dataPer.getByUsername(p);
 		if (per==null) {
-			throw new LoginAppDataException("Nombre de usuario Incorrecto");
+			throw new LoginAppDataException("Nombre de usuario Incorrecto", Level.ERROR);
 		}
 		if (!per.isEnabled()) {
-			throw new LoginAppDataException("Usuario no habilitado");
+			throw new LoginAppDataException("Usuario no habilitado", Level.ERROR);
 		}
 		if(!per.checkPassword(p)){
-			throw new LoginAppDataException("Contraseña Incorrecta");
+			throw new LoginAppDataException("Contraseña Incorrecta", Level.ERROR);
 		}
 		return per;
 	}
