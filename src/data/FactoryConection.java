@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class FactoryConection {
 	
-	private static FactoryConection instancia;
+	private static FactoryConection instance;
 	private Logger logger = LogManager.getLogger(getClass());
 	
 	ProjectConfiguration pConf = new ProjectConfiguration();
@@ -31,10 +31,10 @@ public class FactoryConection {
 	}
 	
 	public static FactoryConection getInstancia() throws Exception{
-		if (FactoryConection.instancia == null){
-			FactoryConection.instancia = new FactoryConection();
+		if (FactoryConection.instance == null){
+			FactoryConection.instance = new FactoryConection();
 		}
-		return FactoryConection.instancia;
+		return FactoryConection.instance;
 	}
 	
 	private Connection conn;

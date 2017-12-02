@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import entities.Bookable;
 import entities.TypeBookable;
-import util.AppDataException;
+import util.exceptions.AppDataException;
 
 public class DataBookable {
 	private Logger logger = LogManager.getLogger(getClass());

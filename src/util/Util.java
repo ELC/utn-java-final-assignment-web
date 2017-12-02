@@ -3,16 +3,9 @@ package util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Formatter;
 
 public class Util {
-	public static String convertTimeToString(Date date) {
-		DateFormat df = new SimpleDateFormat("HH:mm:ss");
-		return df.format(date);
-	}
 
 	public static String hash(String password){
 	    String sha1 = "";

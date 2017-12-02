@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,13 +33,10 @@ public class BookingCrud extends HttpServlet {
 		try{
 	        Reservation booking = new Reservation();
 	        String tbs = request.getParameter("tb");
+	        String date = request.getParameter("date");
+	        String time = request.getParameter("time");
 	        
-	        if (tbs != null){
-		        
-		        String date = request.getParameter("date");
-		        String time = request.getParameter("time");
-		        
-		        // validar que ninguno de los dos sea nulo
+	        if (tbs != null && date != null && time != null){   
 		        
 		        LocalDateTime dt = LocalDateTime.of(LocalDate.parse(date), LocalTime.parse(time));
 		        Timestamp timestamp = Timestamp.valueOf(dt);

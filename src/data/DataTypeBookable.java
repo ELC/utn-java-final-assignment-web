@@ -12,7 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import entities.TypeBookable;
-import util.AppDataException;
+import util.exceptions.AppDataException;
 
 public class DataTypeBookable {
 	

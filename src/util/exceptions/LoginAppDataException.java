@@ -1,13 +1,13 @@
 package util.exceptions;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class LoginAppDataException extends Exception{
+	private static final long serialVersionUID = 1L;
 	
 	public LoginAppDataException() {
-		super("Error en el inicio de sesión");
+		super("Error in the logging");
     }
 
     public LoginAppDataException(String message, Level errorLevel) {
@@ -18,8 +18,8 @@ public class LoginAppDataException extends Exception{
         super(cause);
     }
 
-    private LoginAppDataException(String message, Throwable cause) {
-        super(message, cause);
+    private LoginAppDataException(String message, Throwable e) {
+        super(message, e);
     }
     	
 	public LoginAppDataException(Throwable e, String message, Level errorLevel){

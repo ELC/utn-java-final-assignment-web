@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import entities.Person;
 import entities.UserRole;
-import util.AppDataException;
+import util.exceptions.AppDataException;
 import data.DataUserRoles;
 
 public class DataPerson {
