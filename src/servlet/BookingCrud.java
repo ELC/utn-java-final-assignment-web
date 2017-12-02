@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import logic.ControllerABMCBookable;
 import logic.ControllerABMCReservation;
 import logic.ControllerABMCTypeBookable;
@@ -70,6 +74,11 @@ public class BookingCrud extends HttpServlet {
 			booking.setBookable(b);
 			booking.setDetail("");
 			ctrlBooking.RegisterReservation(booking, (Person)request.getSession().getAttribute("user"));
+			
+			Person user = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Booking ID: " + booking.getId() + " has been made by " + user.getDni());
+			
 			request.getRequestDispatcher("/Booking/Show").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());

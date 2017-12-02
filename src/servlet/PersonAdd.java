@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Person;
 import logic.ControllerABMCPerson;
 
@@ -34,6 +38,10 @@ public class PersonAdd extends HttpServlet {
 			per.setUsername(request.getParameter("User_Person"));
 			per.setEmail(request.getParameter("Email"));
 			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
+			
+			Person user = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Person " + per.getDni() + " has been added by " + user.getDni());
 		
 			request.getRequestDispatcher("/Person/Show").forward(request, response);		
 				

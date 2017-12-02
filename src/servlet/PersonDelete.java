@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Person;
 import logic.ControllerABMCPerson;
 
@@ -24,8 +28,12 @@ public class PersonDelete extends HttpServlet {
 		try {
 			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 				
-			String dni=request.getParameter("Dni");
+			String dni = request.getParameter("Dni");
 			ctrlPer.DeletePerson(ctrlPer.getByDni(dni), (Person)request.getSession().getAttribute("user"));
+			
+			Person user = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Person " + dni + " has been deleted by " + user.getDni());
 			
 			request.getRequestDispatcher("/Person/Show").forward(request, response);			
 			

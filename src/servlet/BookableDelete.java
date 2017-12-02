@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Bookable;
 import entities.Person;
 import logic.ControllerABMCBookable;
@@ -27,6 +31,9 @@ public class BookableDelete extends HttpServlet {
 			ControllerABMCBookable ctrlBookable= new ControllerABMCBookable();
 			Bookable b = new Bookable();
 			b.setName(request.getParameter("Name"));
+			Person user = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Bookalbe " + b.getId() + " has been deleted by " + user.getDni());
 			ctrlBookable.DeleteBookable(b, (Person)request.getSession().getAttribute("user"));
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		} catch (Exception e) {

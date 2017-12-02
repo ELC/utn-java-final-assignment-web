@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Person;
 import logic.ControllerABMCPerson;
 
@@ -41,6 +45,10 @@ public class PersonUpdate extends HttpServlet {
 			per.setUsername(user);
 			per.setEmail(email);
 			ctrlPer.ModifyPerson(per, (Person)request.getSession().getAttribute("user"));
+			
+			Person user2 = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Person " + per.getDni() + " has been updated by " + user2.getDni());
 	
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			
 			

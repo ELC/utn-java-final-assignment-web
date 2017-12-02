@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @WebFilter("/Booking/*")
 public class LogInFilter implements Filter {
 
@@ -26,6 +30,8 @@ public class LogInFilter implements Filter {
         HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("user") == null) {
+        	Logger logger = LogManager.getLogger(getClass());
+        	logger.log(Level.INFO, "Unauthorized access atempt");
         	request.getRequestDispatcher("/403.jsp").forward(request, response);
         } else {
             chain.doFilter(req, res); 

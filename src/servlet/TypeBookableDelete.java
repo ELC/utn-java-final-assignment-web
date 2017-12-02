@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import entities.Person;
 import entities.TypeBookable;
 import logic.ControllerABMCPerson;
@@ -29,6 +33,11 @@ public class TypeBookableDelete extends HttpServlet {
 			TypeBookable t=new TypeBookable();
 			t.setName(name);
 			ctrlTypeBookable.DeleteTypeBookable(t, (Person)request.getSession().getAttribute("user"));
+			
+			Person user = (Person)request.getSession().getAttribute("user");
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.INFO, "Type Bookable " + t.getName() + " has been deleted by " + user.getDni());
+			
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 			
 		} catch (Exception e) {
