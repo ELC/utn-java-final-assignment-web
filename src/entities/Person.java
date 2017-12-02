@@ -47,7 +47,7 @@ public class Person implements Serializable{
 		return username;
 	}
 	public void setUsername(String username) {
-		this.username = Hash.sha1(username);
+		this.username = Hash.sha1(username.toLowerCase());
 	}
 	public void setUsername2(String username) {
 		this.username = username;
