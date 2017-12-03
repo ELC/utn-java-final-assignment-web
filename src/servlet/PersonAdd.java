@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import entities.AccessLevel;
 import entities.Person;
+import entities.UserRole;
 import logic.ControllerABMCPerson;
 import logic.ControllerUserRoles;
 import util.exceptions.AccessDeniedException;
@@ -56,7 +57,9 @@ public class PersonAdd extends HttpServlet {
 			per.setPassword(request.getParameter("Password"));
 			per.setUsername(request.getParameter("User_Person"));
 			per.setEmail(request.getParameter("Email"));
-			per.setUserRole(Integer.parseInt(request.getParameter("ur")));
+			UserRole ur = new UserRole();
+			ur.setId(Integer.parseInt(request.getParameter("ur")));
+			per.setUserRoles(ur);
 			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
 			
 			

@@ -19,13 +19,14 @@ public class Person implements Serializable{
 	private String password;
 	private boolean enabled;
 	private List<AccessLevel> privileges;
-	private int userRole;
+	private UserRole userRoles;
 	
-	public int getUserRole() {
-		return userRole;
+	public UserRole getUserRoles() {
+		return userRoles;
 	}
-	public void setUserRole(int userRole) {
-		this.userRole = userRole;
+	public void setUserRoles(UserRole userRoles) {
+		this.userRoles = userRoles;
+		setPrivileges();
 	}
 	public int getId() {
 		return id;
@@ -91,7 +92,8 @@ public class Person implements Serializable{
 		return this.privileges;	
 	}
 	
-	public void setPrivileges(int privileges) {
+	public void setPrivileges() {
+		int privileges = this.userRoles.getPrivileges();
 		this.privileges = AccessLevel.parsePermissions(privileges);
 	}
 

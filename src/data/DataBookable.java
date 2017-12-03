@@ -18,11 +18,12 @@ import util.exceptions.AppDataException;
 public class DataBookable {
 	private Logger logger = LogManager.getLogger(getClass());
 	
-	public static Bookable buildBookable(ResultSet rs) throws SQLException{
+	public static Bookable buildBookable(ResultSet rs) throws Exception{
 		Bookable b= new Bookable();
 		b.setId(rs.getInt("id_bookable"));
 		b.setName(rs.getString("name_bookable"));
-		TypeBookable type_bookable = DataTypeBookable.getById(rs.getInt("id_type_bookable")); 
+		DataTypeBookable dtb = new DataTypeBookable();
+		TypeBookable type_bookable = dtb.getById(rs.getInt("id_type_bookable")); 
 	    b.setType(type_bookable); 
 		return b;
 	}

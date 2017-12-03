@@ -59,20 +59,33 @@ public class DataTypeBookable {
 		return typeBookables;
 	}
 	
-	public static TypeBookable getById(int id){
-		return null;
-	}
-	
-	public static List<TypeBookable> getAllByPermission(int restriction){
-		return null;
-	}
-	
-	public static List<TypeBookable> getByHourLimit(int HoursLimit){
-		return null;
-	}
-	
-	public static List<TypeBookable> getByDayLimit(int DaysLimit){
-		return null;
+	public TypeBookable getById(int id) throws Exception{
+		TypeBookable t=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=FactoryConection.getInstancia().getConn().prepareStatement(
+					"select * from type_bookable where id_type_bookable=?");
+			stmt.setInt(1, id);
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()){
+				t=buildTypeBookable(rs);
+			}
+			
+		} catch (SQLException e) {
+			logger.log(Level.ERROR, e.getMessage());
+			throw e;
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null)stmt.close();
+				FactoryConection.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
+			}
+		}	
+		return t;
 	}
 	
 	public TypeBookable getByName(TypeBookable type)throws Exception{

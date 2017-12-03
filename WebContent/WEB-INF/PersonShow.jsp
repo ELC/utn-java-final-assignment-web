@@ -13,7 +13,7 @@
 	        <th>Last Name</th>
 	        <th>User Name</th>
 	        <th>E Mail</th>
-	        <th>Password</th>
+	        <th>Role</th>
 	        <th>Enable</th>
 	      </tr>
 	    </thead>
@@ -26,13 +26,13 @@
 				<td>${person.lastName}</td>
 				<td>${person.username}</td>
 				<td>${person.email}</td>
-				<td>${person.password}</td>
+				<td>${person.userRoles.name}</td>
 				<td>
 				<c:if test="${person.enabled}">
 					&#10004;
 				</c:if>
 				<c:if test="${!person.enabled}">
-					&times;
+					&#x2613;
 				</c:if>
 				</td>
 			</tr>

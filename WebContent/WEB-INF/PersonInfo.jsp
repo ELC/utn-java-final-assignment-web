@@ -15,6 +15,7 @@
 			<h2>Last_Name :	${person.lastName}</h2>
 			<h2>Email : ${person.email}</h2>
 			<h2>UserName : ${person.username}</h2>
+			<h2>Role: ${person.userRoles.name}</h2>
 			
 		</c:if>
     </jsp:body>

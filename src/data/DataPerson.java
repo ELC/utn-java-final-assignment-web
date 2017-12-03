@@ -18,6 +18,7 @@ import data.DataUserRoles;
 
 public class DataPerson {
 	private Logger logger = LogManager.getLogger(getClass());
+	private DataUserRoles ctrlRoles = new DataUserRoles();
 	
 	private Person buildPerson(ResultSet rs) throws Exception{
 			Person p = new Person();
@@ -30,9 +31,8 @@ public class DataPerson {
 			p.setUsername2(rs.getString("user_person"));
 			p.setEmail(rs.getString("email"));
 			p.setPassword2(rs.getString("password_person"));
-			DataUserRoles ctrlRoles = new DataUserRoles();
 			UserRole user_role = ctrlRoles.getById(rs.getInt("privileges"));
-			p.setPrivileges(user_role.getPrivileges());
+			p.setUserRoles(user_role);
 		} catch (Exception e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw e;
@@ -259,7 +259,7 @@ public class DataPerson {
 			stmt.setString(5, p.getUsername());
 			stmt.setString(6, p.getPassword());
 			stmt.setString(7, p.getEmail());
-			stmt.setInt(8, p.getUserRole());
+			stmt.setInt(8, p.getUserRoles().getId());
 			stmt.executeUpdate();
 			keyResultSet=stmt.getGeneratedKeys();
 			if(keyResultSet!=null && keyResultSet.next()){

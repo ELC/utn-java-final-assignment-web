@@ -21,7 +21,14 @@
 				<td>${typebookable.name}</td>
 				<td>${typebookable.hourslimit}</td>
 				<td>${typebookable.dayslimit}</td>
-				<td>${typebookable.restriction}</td>
+				<td>
+				<c:if test="${typebookable.restriction == 1}">
+					&#10004;
+				</c:if>
+				<c:if test="${typebookable.restriction == 0}">
+					&#x2613;
+				</c:if>
+				</td>
 			</tr>
 	     </c:forEach>
 	    </tbody>
