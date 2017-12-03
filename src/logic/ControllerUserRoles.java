@@ -6,14 +6,7 @@ import entities.UserRole;
 public class ControllerUserRoles {
 	private DataUserRoles dataRoles= new DataUserRoles();
 	
-	
 	public  ArrayList<UserRole> getAll() throws Exception {
 		return dataRoles.getAll();
 		}
-
-	
-	
-	
-	
-	
 }

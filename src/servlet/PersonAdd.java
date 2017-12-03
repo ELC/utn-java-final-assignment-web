@@ -11,51 +11,53 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import entities.AccessLevel;
 import entities.Person;
 import logic.ControllerABMCPerson;
 import logic.ControllerUserRoles;
+import util.exceptions.AccessDeniedException;
 
 @WebServlet({ "/Person/Add" })
 public class PersonAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ControllerUserRoles ctrlRoles= new ControllerUserRoles();
+	private ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 
     public PersonAdd() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ControllerUserRoles ctrlRoles= new ControllerUserRoles();
 		try {
+			Person user = (Person)request.getSession().getAttribute("user");
+			
+			if (user == null || !user.hasPermission(AccessLevel.CREATE_USER)) {
+				throw new AccessDeniedException();
+			}
+			
 			request.getSession().setAttribute("ListUserRoles", ctrlRoles.getAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.getRequestDispatcher("/WEB-INF/PersonAdd.jsp").forward(request, response);
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
+		}  catch (Exception e) {
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.ERROR, e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}
-		request.getRequestDispatcher("/WEB-INF/PersonAdd.jsp").forward(request, response);
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
-			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 			Person per=new Person();
-			String option= request.getParameter("Option");
 			
-			if (option==null) {
-				per.setEnabled(false);
-			}
-			else {
-				per.setEnabled(true);
-			}
-			
+			per.setEnabled(request.getParameter("Option") != null);
 			per.setName(request.getParameter("Name_Person"));
 			per.setDni(request.getParameter("Dni"));
 			per.setLastName(request.getParameter("Last_name_Person"));
 			per.setPassword(request.getParameter("Password"));
 			per.setUsername(request.getParameter("User_Person"));
 			per.setEmail(request.getParameter("Email"));
-			per.setPrivileges(Integer.parseInt(request.getParameter("ur")));
+			per.setUserRole(Integer.parseInt(request.getParameter("ur")));
 			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
-			
 			
 			
 			Person user = (Person)request.getSession().getAttribute("user");
@@ -64,10 +66,13 @@ public class PersonAdd extends HttpServlet {
 		
 			request.getRequestDispatcher("/Person/Show").forward(request, response);		
 				
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
-		}
+		} 
 	}
 }
 

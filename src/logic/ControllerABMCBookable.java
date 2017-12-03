@@ -38,7 +38,8 @@ public class ControllerABMCBookable {
 		return dataBookable.getByName(name);
 	}
 	
-	public ArrayList<Bookable> GetAll()throws Exception{
+	public ArrayList<Bookable> GetAll(Person per) throws Exception{
+		per.hasPermission(AccessLevel.READ_BOOKABLE);
 		return dataBookable.getAll();
 	}
 

@@ -15,11 +15,6 @@ public class ControllerABMCReservation {
 		per.hasPermission(AccessLevel.CREATE_RESERVATION);
 		dataRes.add(re);
 	}
-	
-	public ArrayList<Reservation> getAllReservation(Person per)throws Exception{
-		per.hasPermission(AccessLevel.READ_RESERVATION);
-		return dataRes.getAll();
-	}
 
 	public List<Reservation> getAllByUser(Person per) throws Exception{
 
@@ -34,7 +29,6 @@ public class ControllerABMCReservation {
 		reservations.removeIf(s -> s.getDate().before(now));
 		return reservations;		
 	}
-	
 
 	public void DeleteReservation(Reservation re, Person per)throws Exception{
 		per.hasPermission(AccessLevel.DELETE_RESERVATION);

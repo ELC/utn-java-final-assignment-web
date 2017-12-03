@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,16 +29,17 @@ public class BookingCrud extends HttpServlet {
 	private static final long serialVersionUID = 3L;
 	private ControllerABMCReservation ctrlBooking= new ControllerABMCReservation();
 	private ControllerABMCBookable ctrlBook = new ControllerABMCBookable();
+	private ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 
     public BookingCrud() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			
 			String token = (String)request.getParameter("token");
 			if (token != null) {
 				String storedToken = (String) request.getSession().getAttribute("token");
 				if (token.equals(storedToken)) {
+					request.getSession().removeAttribute("token");
 					request.getSession().setAttribute("ValidToken", "1");
 					doPost(request, response);
 					return;
@@ -45,32 +47,40 @@ public class BookingCrud extends HttpServlet {
 					throw new Exception("Invalid Token");
 				}
 			}			
+	        
+			Person user = (Person)request.getSession().getAttribute("user");
 			
-	        Reservation booking = new Reservation();
-	        String tbs = request.getParameter("tb");
 	        String date = request.getParameter("date");
 	        String time = request.getParameter("time");
+	        String tbs = request.getParameter("tb");
 	        
-	        if (tbs != null && date != null && time != null){   
-		        
-		        LocalDateTime dt = LocalDateTime.of(LocalDate.parse(date), LocalTime.parse(time));
-		        Timestamp timestamp = Timestamp.valueOf(dt);
-		        booking.setDate(timestamp);
-		        booking.setPerson((Person)request.getSession().getAttribute("user"));
-		        request.getSession().setAttribute("Booking", booking);
-				
-				TypeBookable typeBookable = new TypeBookable();
-				typeBookable.setId(Integer.parseInt(tbs));
-				
-	        	request.getSession().setAttribute("ListBookables", ctrlBook.getAllAvailable(typeBookable, timestamp));
-	        	
-	        	request.getRequestDispatcher("/WEB-INF/BookingCrud2.jsp").forward(request, response);
+	        if ((date == null || time == null) && tbs == null){        	
+		        request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
 	        	return;
 	        }
 	        
-	        ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
-			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll());        	
-	        request.getRequestDispatcher("/WEB-INF/BookingCrud.jsp").forward(request, response);
+	        if (tbs == null) {
+	        	Reservation booking = new Reservation();
+	        	booking.setPerson(user);
+	        	LocalDateTime dt = LocalDateTime.of(LocalDate.parse(date), LocalTime.parse(time));
+		        Timestamp timestamp = Timestamp.valueOf(dt);
+		        booking.setDate(timestamp);
+		        request.getSession().setAttribute("booking", booking);
+	        	request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAllByDate(timestamp, user));        	
+		        request.getRequestDispatcher("/WEB-INF/BookingCrud2.jsp").forward(request, response);
+	        	return;
+	        }
+	        
+	        Reservation booking = (Reservation)request.getSession().getAttribute("booking");
+	        
+			TypeBookable typeBookable = new TypeBookable();
+			typeBookable.setId(Integer.parseInt(tbs));
+			
+			List<Bookable> lb = ctrlBook.getAllAvailable(typeBookable, booking.getDate());
+			
+        	request.getSession().setAttribute("ListBookables", lb);
+        	request.getRequestDispatcher("/WEB-INF/BookingCrud3.jsp").forward(request, response);
+			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Booking/Show").forward(request, response);
@@ -84,7 +94,7 @@ public class BookingCrud extends HttpServlet {
 			String validToken = (String) request.getSession().getAttribute("ValidToken");
 			
 			if (validToken == null) {
-				Reservation booking = (Reservation) request.getSession().getAttribute("Booking");
+				Reservation booking = (Reservation) request.getSession().getAttribute("booking");
 				Bookable b = new Bookable();
 				b.setId(Integer.parseInt(request.getParameter("selectedType")));
 				booking.setBookable(b);
@@ -99,8 +109,7 @@ public class BookingCrud extends HttpServlet {
 				return;
 			}
 			
-			request.getSession().setAttribute("token", null);
-			request.getSession().setAttribute("validToken", null);
+			request.getSession().removeAttribute("ValidToken");
 			
 			Reservation booking = (Reservation)request.getSession().getAttribute("booking");
 			

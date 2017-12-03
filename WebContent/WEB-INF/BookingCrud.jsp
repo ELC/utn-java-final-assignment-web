@@ -7,17 +7,8 @@
 <t:base>
     <jsp:body>
 		<form name="AddBooking" action="${pageContext.request.contextPath}/Booking/CRUD" method="GET">
-        	<select style="width : 143px" name="tb" >
-            	<c:forEach var="tb" items="${ListTypeBookables}">
-					<option value="${tb.id}" >
-						${tb.name}
-					</option>
-	     		</c:forEach>
-            </select>
-
         	<input type="date" name="date">
 			<input type="time" name="time">
-			
         	<button class="btn btn-lg btn-primary btn-block" type="submit">next Step</button>        
     	</form>
     </jsp:body>

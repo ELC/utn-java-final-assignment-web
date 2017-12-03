@@ -17,7 +17,7 @@
 			<tr>
 				<td>${book.id}</td>
 				<td>${book.name}</td>
-				<td>${book.type.getId()}</td>
+				<td>${book.type.name}</td>
 			</tr>
 	     	</c:forEach>
 	    </tbody>

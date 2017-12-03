@@ -25,8 +25,8 @@ public class Logout extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.getSession().invalidate();
 			Person user = (Person)request.getSession().getAttribute("user");
+			request.getSession().invalidate();
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "User " + user.getDni() + " has logged out");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

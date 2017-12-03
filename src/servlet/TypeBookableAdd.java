@@ -11,23 +11,44 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import entities.AccessLevel;
 import entities.Person;
 import entities.TypeBookable;
 
 import logic.ControllerABMCTypeBookable;
+import util.exceptions.AccessDeniedException;
 
 @WebServlet({ "/TypeBookable/Add" })
 public class TypeBookableAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
 
     public TypeBookableAdd() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/TypeBookableAdd.jsp").forward(request, response);
+		try {
+			Person user = (Person)request.getSession().getAttribute("user");
+			
+			if (user == null || !user.hasPermission(AccessLevel.CREATE_TYPEBOOKABLE)) {
+				throw new AccessDeniedException();
+			}
+			
+			request.getRequestDispatcher("/WEB-INF/TypeBookableAdd.jsp").forward(request, response);
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
+		} catch (Exception e) {
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.ERROR, e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			Person user = (Person)request.getSession().getAttribute("user");
+			
 			String name=request.getParameter("Name");
 			String days=request.getParameter("DaysLimit");
 			String hours=request.getParameter("HoursLimit");
@@ -37,16 +58,16 @@ public class TypeBookableAdd extends HttpServlet {
 			t.setDayslimit(Integer.parseInt(days));
 			t.setHourslimit(hours);
 			
-			ControllerABMCTypeBookable ctrlTypeBookable= new ControllerABMCTypeBookable();
+			ctrlTypeBookable.RegisterTypeBookable(t, user);
 			
-			ctrlTypeBookable.RegisterTypeBookable(t, (Person)request.getSession().getAttribute("user"));
-			
-			Person user = (Person)request.getSession().getAttribute("user");
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Type Bookable " + t.getName() + " has been added by " + user.getDni());
 			
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);			
 			
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);

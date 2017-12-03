@@ -249,7 +249,7 @@ public class DataPerson {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"insert into person(dni, name_person,last_name_person, enable_person,user_person,password_person,email) values (?,?,?,?,?,?,?)",
+					"insert into person(dni, name_person,last_name_person, enable_person,user_person,password_person,email,privileges) values (?,?,?,?,?,?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmt.setString(1, p.getDni());
@@ -259,6 +259,7 @@ public class DataPerson {
 			stmt.setString(5, p.getUsername());
 			stmt.setString(6, p.getPassword());
 			stmt.setString(7, p.getEmail());
+			stmt.setInt(8, p.getUserRole());
 			stmt.executeUpdate();
 			keyResultSet=stmt.getGeneratedKeys();
 			if(keyResultSet!=null && keyResultSet.next()){

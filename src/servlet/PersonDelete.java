@@ -11,32 +11,54 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import entities.AccessLevel;
 import entities.Person;
 import logic.ControllerABMCPerson;
+import util.exceptions.AccessDeniedException;
 
 @WebServlet({ "/Person/Delete" })
 public class PersonDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 
     public PersonDelete() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/PersonDelete.jsp").forward(request, response);
+		try {
+			Person user = (Person)request.getSession().getAttribute("user");
+			
+			if (user == null || !user.hasPermission(AccessLevel.DELETE_USER)) {
+				throw new AccessDeniedException();
+			}
+			
+			request.getRequestDispatcher("/WEB-INF/PersonDelete.jsp").forward(request, response);
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
+		}  catch (Exception e) {
+			Logger logger = LogManager.getLogger(getClass());
+			logger.log(Level.ERROR, e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
-				
-			String dni = request.getParameter("Dni");
-			ctrlPer.DeletePerson(ctrlPer.getByDni(dni), (Person)request.getSession().getAttribute("user"));
-			
 			Person user = (Person)request.getSession().getAttribute("user");
+			
+			Person p = new Person();
+			p.setDni(request.getParameter("Dni"));
+			ctrlPer.DeletePerson(ctrlPer.getByDni(p, user ), user);
+			
 			Logger logger = LogManager.getLogger(getClass());
-			logger.log(Level.INFO, "Person " + dni + " has been deleted by " + user.getDni());
+			logger.log(Level.INFO, "Person " + p.getDni() + " has been deleted by " + user.getDni());
 			
 			request.getRequestDispatcher("/Person/Show").forward(request, response);			
 			
+		} catch (AccessDeniedException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);

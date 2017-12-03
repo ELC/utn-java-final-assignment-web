@@ -41,15 +41,14 @@ public class ControllerABMCPerson {
 		dataPer.delete(p);
 	}
 
-	public Person getByDni(Person p) throws Exception{
+	public Person getByDni(Person p, Person per) throws Exception{
+		per.hasPermission(AccessLevel.READ_USER);
 		return dataPer.getByDni(p);
 	}
 	
-	public Person getByDni(String dni) throws Exception{
-		return dataPer.getByDni(dni);
-	}
-	
-	public List<Person> getAll() throws Exception{
+	public List<Person> getAll(Person per) throws Exception{
+		per.hasPermission(AccessLevel.READ_USER);
 		return dataPer.getAll();
 	}
+	
 }

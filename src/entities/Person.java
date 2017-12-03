@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import entities.AccessLevel;
 import util.Hash;
+import util.exceptions.AccessDeniedException;
 
 public class Person implements Serializable{
 	
@@ -18,7 +19,14 @@ public class Person implements Serializable{
 	private String password;
 	private boolean enabled;
 	private List<AccessLevel> privileges;
+	private int userRole;
 	
+	public int getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(int userRole) {
+		this.userRole = userRole;
+	}
 	public int getId() {
 		return id;
 	}
@@ -87,13 +95,11 @@ public class Person implements Serializable{
 		this.privileges = AccessLevel.parsePermissions(privileges);
 	}
 
-	public boolean hasPermission(AccessLevel permission){ 
-	    return getPrivileges().contains(permission);
+	public boolean hasPermission(AccessLevel permission) throws AccessDeniedException{
+		if (!getPrivileges().contains(permission)) {
+			throw new AccessDeniedException();
+		}
+	    return true;
 	}
-
-	public int getIntPrivileges() {
-		return AccessLevel.combinePermissions(getPrivileges());
-	}
-	
 	
 }
