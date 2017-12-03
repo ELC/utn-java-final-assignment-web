@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-</body>
-</html>
+<t:base>
+    <jsp:body>
+		<form name="SelectBookable" action="${pageContext.request.contextPath}/Bookable/Select" method="post">
+	        <input name="Id" id="inputId" class="form-control" placeholder="Id Bookable" required type="IdBookable" style="margin: 15px 0px 15px 0px; height:2em">
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Select Bookable</button>
+	    </form>
+    </jsp:body>
+</t:base>

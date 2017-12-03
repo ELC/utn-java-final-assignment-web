@@ -118,6 +118,7 @@ public class BookingCrud extends HttpServlet {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Booking ID: " + booking.getId() + " has been made by " + user.getDni());
 			
+			request.getSession().setAttribute("messageSuccess", "Booking successfully created");
 			request.getRequestDispatcher("/Booking/Show").forward(request, response);
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());

@@ -160,12 +160,12 @@ public class DataTypeBookable {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"update type_bookable set name_type_bookable=?, restriction=?, hours_limit= ?, days_limit=? where name_type_bookable=?");
+					"update type_bookable set name_type_bookable=?, restriction=?, hours_limit= ?, days_limit=? where id_type_bookable=?");
 			stmt.setString(1, b.getName());
 			stmt.setInt(2, b.getRestriction());
 			stmt.setString(3, b.getHourslimit());
 			stmt.setInt(4, b.getDayslimit());
-			stmt.setString(5, b.getName());
+			stmt.setInt(5, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);
@@ -188,8 +188,8 @@ public class DataTypeBookable {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"delete from type_bookable where name_type_bookable=?");
-			stmt.setString(1, b.getName());
+					"delete from type_bookable where id_type_bookable=?");
+			stmt.setInt(1, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);

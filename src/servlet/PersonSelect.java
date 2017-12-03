@@ -32,7 +32,7 @@ public class PersonSelect extends HttpServlet {
 				throw new AccessDeniedException();
 			}
 			
-			request.getSession().removeAttribute("person");
+			//request.getSession().removeAttribute("person"); PORQUE ESTO ESTA ACA??
 			request.getRequestDispatcher("/WEB-INF/PersonSelect.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());

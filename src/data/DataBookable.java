@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import entities.Bookable;
+import entities.Person;
 import entities.TypeBookable;
 import util.exceptions.AppDataException;
 
@@ -57,25 +58,25 @@ public class DataBookable {
 		return bookables;
 	}
 	
-	public Bookable getById(Bookable bo) throws Exception{
-		Bookable b= new Bookable();
+	public Bookable getById(Bookable bo)throws Exception{
+		Bookable b=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			stmt= FactoryConection.getInstancia().getConn().prepareStatement(		
+			stmt=FactoryConection.getInstancia().getConn().prepareStatement(
 					"select * from bookable where id_bookable=?");
-			stmt.setInt(1, bo.getId()); 
-			rs = stmt.executeQuery();
+			stmt.setInt(1, bo.getId());
+			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){
 				b=buildBookable(rs);
 			}
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw e;
-		} finally {	
+		} finally {
 			try {
-				if(rs!=null) rs.close();
-				if(stmt!=null) stmt.close();
+				if(rs!=null)rs.close();
+				if(stmt!=null)stmt.close();
 				FactoryConection.getInstancia().releaseConn();
 			} catch (SQLException e) {
 				logger.log(Level.ERROR, e.getMessage());
@@ -248,8 +249,8 @@ public class DataBookable {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"delete from bookable where name_bookable=?");
-			stmt.setString(1, b.getName());
+					"delete from bookable where id_bookable=?");
+			stmt.setInt(1, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "Elemento inexistente", Level.ERROR);

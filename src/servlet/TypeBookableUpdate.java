@@ -46,14 +46,21 @@ public class TypeBookableUpdate extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			int id= Integer.parseInt(request.getParameter("Id"));
 			String name=request.getParameter("Name");
 			String days=request.getParameter("DaysLimit");
 			String hours=request.getParameter("HoursLimit");
+			int restriction;
 			
+			if (request.getParameter("Option") != null) {
+				restriction=1;
+			} else {restriction=0;}
 			TypeBookable t=new TypeBookable();
+			t.setId(id);
 			t.setName(name);
 			t.setDayslimit(Integer.parseInt(days));
 			t.setHourslimit(hours);
+			t.setRestriction(restriction);
 			
 			ctrlTypeBookable.ModifyTypeBookable(t, (Person)request.getSession().getAttribute("user"));
 			
@@ -61,6 +68,7 @@ public class TypeBookableUpdate extends HttpServlet {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Type Bookable " + t.getName() + " has been updated by " + user.getDni());
 			
+			request.getSession().setAttribute("messageSuccess", "TypeBookable successfully updated");
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 			
 		} catch (AccessDeniedException e) {

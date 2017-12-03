@@ -54,6 +54,7 @@ public class BookableAdd extends HttpServlet {
 			bookable.setType(typeBookable);
 			ctrlBook.RegisterBookable(bookable, (Person)request.getSession().getAttribute("user"));
 			
+			request.getSession().setAttribute("messageSuccess", "Bookable successfully created");
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);			
 			
 		} catch (AccessDeniedException e) {

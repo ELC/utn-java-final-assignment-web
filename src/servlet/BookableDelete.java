@@ -47,11 +47,12 @@ public class BookableDelete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Bookable b = new Bookable();
-			b.setName(request.getParameter("Name"));
+			b.setId(Integer.parseInt(request.getParameter("Id")));
 			Person user = (Person)request.getSession().getAttribute("user");
 			Logger logger = LogManager.getLogger(getClass());
-			logger.log(Level.INFO, "Bookalbe " + b.getId() + " has been deleted by " + user.getDni());
+			logger.log(Level.INFO, "Bookable " + b.getId() + " has been deleted by " + user.getDni());
 			ctrlBookable.DeleteBookable(b, (Person)request.getSession().getAttribute("user"));
+			request.getSession().setAttribute("messageSuccess", "Bookable successfully deleted");
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());

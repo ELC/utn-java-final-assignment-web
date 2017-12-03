@@ -52,17 +52,25 @@ public class TypeBookableAdd extends HttpServlet {
 			String name=request.getParameter("Name");
 			String days=request.getParameter("DaysLimit");
 			String hours=request.getParameter("HoursLimit");
+			int restriction;
+			if (request.getParameter("Option") != null) {
+				restriction=1;
+			} else {
+				restriction =0;
+				}
 			
 			TypeBookable t=new TypeBookable();
 			t.setName(name);
 			t.setDayslimit(Integer.parseInt(days));
 			t.setHourslimit(hours);
+			t.setRestriction(restriction);
 			
 			ctrlTypeBookable.RegisterTypeBookable(t, user);
 			
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Type Bookable " + t.getName() + " has been added by " + user.getDni());
 			
+			request.getSession().setAttribute("messageSuccess", "TypeBookable successfully created");
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);			
 			
 		} catch (AccessDeniedException e) {

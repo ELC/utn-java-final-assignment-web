@@ -26,7 +26,8 @@ public class ControllerABMCBookable {
 		return dataBookable.getByName(b);
 	}
 	
-	public Bookable getById(Bookable b)throws Exception{
+	public Bookable getById(Bookable b,Person user)throws Exception{
+		user.hasPermission(AccessLevel.READ_BOOKABLE);
 		return dataBookable.getById(b);
 	}
 	

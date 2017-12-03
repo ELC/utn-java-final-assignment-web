@@ -12,13 +12,14 @@
 			<h2>Id : ${type.id} </h2>
 			<h2>Name : ${type.name}</h2>
 			<h2>Days Limits : ${type.dayslimit}</h2>
-		
+			<h2>Hours Limits : ${type.hourslimit} hs</h2>
 		 <c:if test="${type.restriction==1}">
 	    <h2>Restriction : Yes </h2>
 			</c:if>
 			 <c:if test="${type.restriction==0}">
 	    <h2>Restriction : No </h2>
 			</c:if>
+		
 			
 		</c:if>
     </jsp:body>
