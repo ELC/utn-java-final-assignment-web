@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <t:base>
     <jsp:body>
 		<form name="UpdatePerson" action="${pageContext.request.contextPath}/Person/Update" method="post">
@@ -10,7 +10,16 @@
 	        <input name="User_Person" id="inputUser" class="form-control" placeholder=" New user" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
 	        <input name="Password" id="inputPassWord" class="form-control" placeholder=" New pass" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
 	        <input name="Email" id="inputEmail" class="form-control" placeholder="New Email" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Update Person</button>
+	       	<input type="checkbox" name="Option" value="true"> Enable<br>
+ 			<select style="width : 143px" name="ur" >
+            	<c:forEach var="ur" items="${ListUserRoles}">
+					<option value="${ur.id}" >
+						${ur.name}
+					</option>
+	     		</c:forEach>
+            </select>       
+        	 <button class="btn btn-lg btn-primary btn-block" type="submit">Update Person</button>
+        
         </form>
     </jsp:body>
 </t:base>

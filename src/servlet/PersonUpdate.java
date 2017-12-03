@@ -13,12 +13,15 @@ import org.apache.logging.log4j.Logger;
 
 import entities.AccessLevel;
 import entities.Person;
+import entities.UserRole;
 import logic.ControllerABMCPerson;
+import logic.ControllerUserRoles;
 import util.exceptions.AccessDeniedException;
 
 @WebServlet({ "/Person/Update" })
 public class PersonUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ControllerUserRoles ctrlRoles= new ControllerUserRoles();
 	private ControllerABMCPerson ctrlPer= new ControllerABMCPerson();
 
     public PersonUpdate() {}
@@ -30,7 +33,7 @@ public class PersonUpdate extends HttpServlet {
 			if (user == null || !user.hasPermission(AccessLevel.MODIFY_USER)) {
 				throw new AccessDeniedException();
 			}
-			
+			request.getSession().setAttribute("ListUserRoles", ctrlRoles.getAll());
 			request.getRequestDispatcher("/WEB-INF/PersonUpdate.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
@@ -54,10 +57,16 @@ public class PersonUpdate extends HttpServlet {
 			per.setPassword(request.getParameter("Password"));
 			per.setUsername(request.getParameter("User_Person"));
 			per.setEmail(request.getParameter("Email"));
+			per.setEnabled(request.getParameter("Option") != null);
+			UserRole ur = new UserRole();
+			ur.setId(Integer.parseInt(request.getParameter("ur")));
+			per.setUserRoles(ur);
+			
 			ctrlPer.ModifyPerson(per, user);
 			
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Person " + per.getDni() + " has been updated by " + user.getDni());
+			request.getSession().setAttribute("messageSuccess", "Person successfully updated");
 	
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			
 			

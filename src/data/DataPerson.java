@@ -311,14 +311,15 @@ public class DataPerson {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"update person set name_person=?, last_name_person=?, user_person=?, email=?, password_person=?, enable_person=? where dni=?");
+					"update person set name_person=?, last_name_person=?, user_person=?, email=?, password_person=?, enable_person=? , privileges=? where dni=?");
 			stmt.setString(1, p.getName());
 			stmt.setString(2, p.getLastName());
 			stmt.setString(3, p.getUsername());
 			stmt.setString(4, p.getEmail());
 			stmt.setString(5, p.getPassword());
 			stmt.setBoolean(6, p.isEnabled());
-			stmt.setString(7, p.getDni());
+			stmt.setInt(7, p.getUserRoles().getId());
+			stmt.setString(8, p.getDni());
 			
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){

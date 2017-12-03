@@ -53,7 +53,7 @@ public class PersonDelete extends HttpServlet {
 			
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Person " + p.getDni() + " has been deleted by " + user.getDni());
-			
+			request.getSession().setAttribute("messageSuccess", "Person successfully deleted");
 			request.getRequestDispatcher("/Person/Show").forward(request, response);			
 			
 		} catch (AccessDeniedException e) {
