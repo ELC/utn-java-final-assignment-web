@@ -15,6 +15,7 @@ import entities.AccessLevel;
 import entities.Person;
 import logic.ControllerABMCPerson;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 
 @WebServlet({ "/Person/Delete" })
 public class PersonDelete extends HttpServlet {
@@ -49,7 +50,7 @@ public class PersonDelete extends HttpServlet {
 			
 			Person p = new Person();
 			p.setDni(request.getParameter("Dni"));
-			ctrlPer.DeletePerson(ctrlPer.getByDni(p, user ), user);
+			ctrlPer.DeletePerson(p, user);
 			
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Person " + p.getDni() + " has been deleted by " + user.getDni());
@@ -59,7 +60,11 @@ public class PersonDelete extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		} catch (Exception e) {
+		} catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
+		}
+		catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}

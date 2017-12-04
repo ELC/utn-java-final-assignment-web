@@ -140,7 +140,7 @@ public class DataTypeBookable {
 			}
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
-			throw e;
+			throw new AppDataException(null,"An error has occurred in the database, contact the system admin",Level.ERROR);
 		} finally {
 			try {
 				if(keyResultSet!=null) {keyResultSet.close();}
@@ -169,7 +169,7 @@ public class DataTypeBookable {
 			stmt.setInt(5, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			
 			}
 		} catch (AppDataException apd) {
@@ -193,7 +193,7 @@ public class DataTypeBookable {
 			stmt.setInt(1, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Tipo elemento inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			}	
 		} catch (AppDataException apd) {
 			throw apd;

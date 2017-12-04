@@ -16,6 +16,7 @@ import entities.AccessLevel;
 import entities.Person;
 import logic.ControllerABMCPerson;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.ElementNotFoundException;
 
 @WebServlet({ "/Person/Select" })
 public class PersonSelect extends HttpServlet {
@@ -51,14 +52,18 @@ public class PersonSelect extends HttpServlet {
 			p.setDni(request.getParameter("Dni"));
 			p = ctrlPer.getByDni(p, user);
 			if (p == null){
-				throw new Exception("User doesn't exist");			
+				throw new ElementNotFoundException("User doesn't exist",Level.ERROR);			
 			}
 			request.getSession().setAttribute("person", p);		
 			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);			
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		} catch (Exception e) {
+		} catch (ElementNotFoundException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/WEB-INF/TypeBookableInfo.jsp").forward(request, response);
+		}
+		  catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
 		}

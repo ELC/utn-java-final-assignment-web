@@ -14,6 +14,7 @@ import entities.TypeBookable;
 import logic.ControllerABMCBookable;
 import logic.ControllerABMCTypeBookable;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 
 @WebServlet({ "/Bookable/Add" })
 public class BookableAdd extends HttpServlet {
@@ -60,7 +61,11 @@ public class BookableAdd extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		} catch (Exception e) {
+		} catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
+		}
+		  catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		}

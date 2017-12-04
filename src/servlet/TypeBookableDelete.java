@@ -16,6 +16,7 @@ import entities.Person;
 import entities.TypeBookable;
 import logic.ControllerABMCTypeBookable;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 
 @WebServlet({ "/TypeBookable/Delete" })
 public class TypeBookableDelete extends HttpServlet {
@@ -60,7 +61,11 @@ public class TypeBookableDelete extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		} catch (Exception e) {
+		} catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
+		}   
+		 catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/TypeBookable/Show").forward(request, response);
 		}

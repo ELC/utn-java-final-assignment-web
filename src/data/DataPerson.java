@@ -267,7 +267,8 @@ public class DataPerson {
 			}
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
-			throw e;
+			throw new AppDataException(null,"An error has occurred in the database, contact the system admin",Level.ERROR);
+			
 		} finally{
 			try {
 				if(keyResultSet!=null)keyResultSet.close();
@@ -289,7 +290,7 @@ public class DataPerson {
 			stmt.setString(1, p.getDni());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Persona inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			}
 			
 		
@@ -323,7 +324,7 @@ public class DataPerson {
 			
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Persona inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			}	
 		} catch (AppDataException e) {
 			throw e;

@@ -202,7 +202,7 @@ public class DataBookable {
 			
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
-			throw e;
+			throw new AppDataException(null,"an error has occurred with the database, contact the system administrator",Level.ERROR);
 		} finally {
 			try {
 				if(keyResultSet!=null) {keyResultSet.close();}
@@ -229,7 +229,7 @@ public class DataBookable {
 			
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Elemento Inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			}		
 		} catch (AppDataException apd) {
 			throw apd;
@@ -253,7 +253,7 @@ public class DataBookable {
 			stmt.setInt(1, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
-				throw new AppDataException(null, "Elemento inexistente", Level.ERROR);
+				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
 			}
 		} catch (AppDataException apd) {
 			throw apd;

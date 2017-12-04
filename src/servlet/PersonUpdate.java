@@ -17,6 +17,7 @@ import entities.UserRole;
 import logic.ControllerABMCPerson;
 import logic.ControllerUserRoles;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 
 @WebServlet({ "/Person/Update" })
 public class PersonUpdate extends HttpServlet {
@@ -73,7 +74,11 @@ public class PersonUpdate extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		} catch (Exception e) {
+		} catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/Person/Show").forward(request, response);
+		}
+		  catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}

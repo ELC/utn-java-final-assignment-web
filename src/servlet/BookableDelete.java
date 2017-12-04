@@ -16,6 +16,7 @@ import entities.Bookable;
 import entities.Person;
 import logic.ControllerABMCBookable;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 
 
 @WebServlet({ "/Bookable/Delete" })
@@ -57,7 +58,11 @@ public class BookableDelete extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		}  catch (Exception e) {
+		} catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
+		} 
+		  catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		}
