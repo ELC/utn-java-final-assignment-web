@@ -229,7 +229,7 @@ public class DataPerson {
 			
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
-			throw e;
+			throw new AppDataException(null,"An error has occurred in the database, contact the system admin",Level.ERROR);
 		} finally {
 			try {
 				if(rs!=null)rs.close();

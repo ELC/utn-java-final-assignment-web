@@ -16,6 +16,7 @@ import entities.AccessLevel;
 import entities.Person;
 import logic.ControllerABMCPerson;
 import util.exceptions.AccessDeniedException;
+import util.exceptions.AppDataException;
 import util.exceptions.ElementNotFoundException;
 
 @WebServlet({ "/Person/Select" })
@@ -33,7 +34,6 @@ public class PersonSelect extends HttpServlet {
 				throw new AccessDeniedException();
 			}
 			
-			//request.getSession().removeAttribute("person"); PORQUE ESTO ESTA ACA??
 			request.getRequestDispatcher("/WEB-INF/PersonSelect.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
@@ -56,7 +56,11 @@ public class PersonSelect extends HttpServlet {
 			}
 			request.getSession().setAttribute("person", p);		
 			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);			
-		} catch (AccessDeniedException e) {
+		} 	catch (AppDataException e) {
+			request.getSession().setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("/403.jsp").forward(request, response);
+		}
+			catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
 		} catch (ElementNotFoundException e) {
