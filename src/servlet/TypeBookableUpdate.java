@@ -60,7 +60,8 @@ public class TypeBookableUpdate extends HttpServlet {
 			int minutes = (int)(hours * 60);
 			int h = minutes / 60;
 			int m = minutes % 60;
-			String hoursLimit = h+":"+m;			
+			String hoursLimit = h+":"+m;
+			int maxBookings= Integer.parseInt(request.getParameter("maxBookings"));
 			
 			TypeBookable t=new TypeBookable();
 			t.setId(id);
@@ -68,6 +69,7 @@ public class TypeBookableUpdate extends HttpServlet {
 			t.setDayslimit(Integer.parseInt(days));
 			t.setHourslimit(hoursLimit);
 			t.setRestriction(restriction);
+			t.setMaxBookings(maxBookings);
 			
 			ctrlTypeBookable.ModifyTypeBookable(t, (Person)request.getSession().getAttribute("user"));
 			

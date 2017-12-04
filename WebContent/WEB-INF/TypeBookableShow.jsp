@@ -11,6 +11,7 @@
 	        <th>Name</th>
 	        <th>Hours Limit</th>
 	        <th>Days Limit</th>
+	        <th>maxBookings</th>
 	        <th>Restriction</th>
 	      </tr>
 	    </thead>
@@ -21,6 +22,7 @@
 				<td>${typebookable.name}</td>
 				<td>${typebookable.hourslimit}</td>
 				<td>${typebookable.dayslimit}</td>
+				<td>${typebookable.maxBookings}</td>
 				<td>
 				<c:if test="${typebookable.restriction == 1}">
 					&#10004;

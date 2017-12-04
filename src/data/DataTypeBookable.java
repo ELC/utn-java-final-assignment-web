@@ -26,6 +26,7 @@ public class DataTypeBookable {
 		tb.setHourslimit(rs.getString("hours_limit"));
 		tb.setDayslimit(rs.getInt("days_limit"));
 		tb.setRestriction(rs.getInt("restriction"));
+		tb.setMaxBookings(rs.getInt("max_bookings"));
 		return tb;
 	}
 	
@@ -124,13 +125,14 @@ public class DataTypeBookable {
 		PreparedStatement stmt=null;
 		try {
 			stmt= FactoryConection.getInstancia().getConn().prepareStatement(
-					"insert into type_bookable (name_type_bookable,restriction,hours_limit,days_limit) values(?,?,?,?) ",
+					"insert into type_bookable (name_type_bookable,restriction,hours_limit,days_limit,max_bookings) values(?,?,?,?,?) ",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 	
 			stmt.setString(1, b.getName()); // los numeros corresponden a los de ? de la query//
 			stmt.setInt(2, b.getRestriction());
 			stmt.setString(3, b.getHourslimit());
 			stmt.setInt(4, b.getDayslimit());
+			stmt.setInt(5, b.getMaxBookings());
 			stmt.executeUpdate();
 			stmt.getGeneratedKeys();
 			keyResultSet= stmt.getGeneratedKeys(); //Preguntar que hace?
@@ -161,12 +163,13 @@ public class DataTypeBookable {
 		try {
 			stmt=FactoryConection.getInstancia().getConn()
 					.prepareStatement(
-					"update type_bookable set name_type_bookable=?, restriction=?, hours_limit= ?, days_limit=? where id_type_bookable=?");
+					"update type_bookable set name_type_bookable=?, restriction=?, hours_limit= ?, days_limit=?, max_bookings=? where id_type_bookable=?");
 			stmt.setString(1, b.getName());
 			stmt.setInt(2, b.getRestriction());
 			stmt.setString(3, b.getHourslimit());
 			stmt.setInt(4, b.getDayslimit());
-			stmt.setInt(5, b.getId());
+			stmt.setInt(5, b.getMaxBookings());
+			stmt.setInt(6, b.getId());
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);

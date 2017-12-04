@@ -32,7 +32,7 @@ public class BookableAdd extends HttpServlet {
 				throw new AccessDeniedException();
 			}
 			
-			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll());
+			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll(user));
 			request.getRequestDispatcher("/WEB-INF/BookableAdd.jsp").forward(request, response);
 
 		} catch (AccessDeniedException e) {

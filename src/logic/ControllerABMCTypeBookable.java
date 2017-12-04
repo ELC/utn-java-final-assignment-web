@@ -32,7 +32,8 @@ public class ControllerABMCTypeBookable{
 		dataTypeBookable.delete(b);
 	}
 	
-	public ArrayList<TypeBookable> getAll()throws Exception{
+	public ArrayList<TypeBookable> getAll(Person per)throws Exception{
+		per.hasPermission(AccessLevel.READ_TYPEBOOKABLE);
 		return dataTypeBookable.getAll();
 	}
 	

@@ -11,9 +11,9 @@ public class TypeBookable implements Serializable {
 	private String hourslimit;
 	private int dayslimit;
 	private int restriction;
+	private int maxBookings;
 	
 	public TypeBookable(){}
-	
 	
 	public int getId() {
 		return id;
@@ -48,6 +48,12 @@ public class TypeBookable implements Serializable {
 	}
 	public void setRestriction(int restriction) {
 		this.restriction = restriction;
+	}
+	public int getMaxBookings() {
+		return maxBookings;
+	}
+	public void setMaxBookings(int maxBookings) {
+		this.maxBookings = maxBookings;
 	}
 
 	@Override

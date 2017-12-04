@@ -65,12 +65,14 @@ public class TypeBookableAdd extends HttpServlet {
 			int h = minutes / 60;
 			int m = minutes % 60;
 			String hoursLimit = h+":"+m;
+			int maxBookings= Integer.parseInt(request.getParameter("maxBookings"));
 			
 			TypeBookable t=new TypeBookable();
 			t.setName(name);
 			t.setDayslimit(Integer.parseInt(days));
 			t.setHourslimit(hoursLimit);
 			t.setRestriction(restriction);
+			t.setMaxBookings(maxBookings);
 			
 			ctrlTypeBookable.RegisterTypeBookable(t, user);
 			
