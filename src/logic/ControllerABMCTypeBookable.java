@@ -36,6 +36,10 @@ public class ControllerABMCTypeBookable{
 		return dataTypeBookable.getAll();
 	}
 	
+	public TypeBookable getById(int id, Person per)throws Exception{
+		per.hasPermission(AccessLevel.READ_TYPEBOOKABLE);
+		return dataTypeBookable.getById(id);
+	}
 	public ArrayList<TypeBookable> getAllByUser(Person per) throws Exception{
 		per.hasPermission(AccessLevel.READ_TYPEBOOKABLE);
 		ArrayList<TypeBookable> all = dataTypeBookable.getAll();

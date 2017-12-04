@@ -73,8 +73,7 @@ public class BookingCrud extends HttpServlet {
 	        
 	        Reservation booking = (Reservation)request.getSession().getAttribute("booking");
 	        
-			TypeBookable typeBookable = new TypeBookable();
-			typeBookable.setId(Integer.parseInt(tbs));
+			TypeBookable typeBookable = ctrlTypeBookable.getById(Integer.parseInt(tbs), user);
 			
 			List<Bookable> lb = ctrlBook.getAllAvailable(typeBookable, booking.getDate());
 			
