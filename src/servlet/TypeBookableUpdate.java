@@ -49,17 +49,23 @@ public class TypeBookableUpdate extends HttpServlet {
 			int id= Integer.parseInt(request.getParameter("Id"));
 			String name=request.getParameter("Name");
 			String days=request.getParameter("DaysLimit");
-			String hours=request.getParameter("HoursLimit");
 			int restriction;
 			
 			if (request.getParameter("Option") != null) {
 				restriction=1;
 			} else {restriction=0;}
+			
+			float hours = Float.parseFloat(request.getParameter("HoursLimit"));
+			int minutes = (int)(hours * 60);
+			int h = minutes / 60;
+			int m = minutes % 60;
+			String hoursLimit = h+":"+m;			
+			
 			TypeBookable t=new TypeBookable();
 			t.setId(id);
 			t.setName(name);
 			t.setDayslimit(Integer.parseInt(days));
-			t.setHourslimit(hours);
+			t.setHourslimit(hoursLimit);
 			t.setRestriction(restriction);
 			
 			ctrlTypeBookable.ModifyTypeBookable(t, (Person)request.getSession().getAttribute("user"));
