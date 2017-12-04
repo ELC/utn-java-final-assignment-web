@@ -42,7 +42,7 @@ public class ControllerABMCTypeBookable{
 	}
 	public ArrayList<TypeBookable> getAllByUser(Person per) throws Exception{
 		per.hasPermission(AccessLevel.READ_TYPEBOOKABLE);
-		ArrayList<TypeBookable> all = dataTypeBookable.getAll();
+		ArrayList<TypeBookable> all = dataTypeBookable.getAllByMaxBookings(per);
 		try{
 			per.hasPermission(AccessLevel.CREATE_SPECIAL_RESERVATION);
 		} catch (AccessDeniedException e){

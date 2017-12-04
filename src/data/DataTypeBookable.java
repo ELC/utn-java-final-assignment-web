@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import entities.Person;
 import entities.TypeBookable;
 import util.exceptions.AppDataException;
 
@@ -205,5 +206,50 @@ public class DataTypeBookable {
 				throw e;
 			}
 		}
+	}
+
+	public ArrayList<TypeBookable> getAllByMaxBookings(Person per) throws Exception {
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		ArrayList<TypeBookable> typeBookables= new ArrayList<TypeBookable>();
+		try{
+			stmt = FactoryConection.getInstancia().getConn()
+					.prepareStatement("select tb.id_type_bookable, tb.restriction, tb.hours_limit, \r\n" + 
+							"	tb.days_limit, tb.name_type_bookable, tb.max_bookings, \r\n" + 
+							"	count(case res.id_person when ? then 1 else null end) as c\r\n" + 
+							"from type_bookable tb\r\n" + 
+							"inner join bookable b\r\n" + 
+							"	on b.id_type_bookable = tb.id_type_bookable\r\n" + 
+							"left join reservation res\r\n" + 
+							"	on b.id_bookable = res.id_bookable\r\n" + 
+							"where (res.id_person = ? and res.dateTimeReservation > current_timestamp()) \r\n" + 
+							"	or (res.id_person != ? or res.id_person is null)\r\n" + 
+							"group by 1, 2, 3, 4, 5, 6\r\n" + 
+							"having c < tb.max_bookings;");
+			stmt.setInt(1, per.getId());
+			stmt.setInt(2, per.getId());
+			stmt.setInt(3, per.getId());
+			rs = stmt.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					TypeBookable tb = buildTypeBookable(rs);
+					typeBookables.add(tb);
+				}			
+			}
+		} catch(Exception e) {
+			logger.log(Level.ERROR, e.getMessage());
+			e.printStackTrace();			
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(stmt!=null) stmt.close();
+				FactoryConection.getInstancia().releaseConn();
+			} catch (SQLException e) {	
+				logger.log(Level.ERROR, e.getMessage());
+				throw e;
+			}
+		}
+		
+		return typeBookables;
 	}
 }
