@@ -47,11 +47,8 @@ public class ControllerABMCTypeBookable{
 			per.hasPermission(AccessLevel.CREATE_SPECIAL_RESERVATION);
 		} catch (AccessDeniedException e){
 			all.removeIf(s -> s.getRestriction() == 1);
-		} finally {
-			return all;
 		}
-		
-		
+		return all;		
 	}
 	
 	public ArrayList<TypeBookable> getAllByDate(Timestamp date, Person per)throws Exception{

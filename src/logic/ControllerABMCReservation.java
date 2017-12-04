@@ -7,6 +7,7 @@ import java.util.List;
 
 import data.DataReservation;
 import entities.*;
+import util.exceptions.AccessDeniedException;
 
 public class ControllerABMCReservation {
 	private DataReservation dataRes = new DataReservation();
@@ -19,9 +20,10 @@ public class ControllerABMCReservation {
 	public List<Reservation> getAllByUser(Person per) throws Exception{
 
 		ArrayList<Reservation> reservations;
-		if (per.hasPermission(AccessLevel.READ_ALLBOOKING)){
+		try {
+			per.hasPermission(AccessLevel.READ_ALLBOOKING);
 			reservations = (ArrayList<Reservation>) dataRes.getAll();
-		} else{
+		} catch (AccessDeniedException e) {
 			reservations = (ArrayList<Reservation>) dataRes.getByIdPerson(per);
 		}
 		Timestamp now = new Timestamp((new Date()).getTime());
