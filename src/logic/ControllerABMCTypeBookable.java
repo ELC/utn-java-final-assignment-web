@@ -52,6 +52,17 @@ public class ControllerABMCTypeBookable{
 		return all;		
 	}
 	
+	public ArrayList<TypeBookable> getAllShowByUser(Person per) throws Exception{
+		per.hasPermission(AccessLevel.READ_TYPEBOOKABLE);
+		ArrayList<TypeBookable> all = dataTypeBookable.getAll();
+		try{
+			per.hasPermission(AccessLevel.CREATE_SPECIAL_RESERVATION);
+		} catch (AccessDeniedException e){
+			all.removeIf(s -> s.getRestriction() == 1);
+		}
+		return all;		
+	}
+	
 	public ArrayList<TypeBookable> getAllByDate(Timestamp date, Person per)throws Exception{
 		ArrayList<TypeBookable> all = getAllByUser(per);
 		all.removeIf(s -> DAYS.between(LocalDate.now(), date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) > s.getDayslimit() && s.getDayslimit() != 0);

@@ -47,7 +47,7 @@ public class TypeBookableShow extends HttpServlet {
 		try{
 			Person user = (Person)request.getSession().getAttribute("user");
 			
-			List<TypeBookable> tb = ctrlTypeBookable.getAll(user);
+			List<TypeBookable> tb = ctrlTypeBookable.getAllShowByUser(user);
 			
 			request.getSession().setAttribute("TypeBookables", tb);
 			
