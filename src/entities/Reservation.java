@@ -1,16 +1,17 @@
 package entities;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Reservation{
+public class Reservation implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private Person person;
 	private Bookable bookable;
 	private Timestamp date;
 	private String detail;
-
-
 	
 	public String getDetail() {
 		return detail;

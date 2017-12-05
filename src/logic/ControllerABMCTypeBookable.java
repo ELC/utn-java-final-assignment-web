@@ -12,8 +12,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.sql.Timestamp;
 
-
-
 public class ControllerABMCTypeBookable{
 	private DataTypeBookable dataTypeBookable = new DataTypeBookable();
 

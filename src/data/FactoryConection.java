@@ -9,17 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class FactoryConection {
-	
 	private static FactoryConection instance;
 	private Logger logger = LogManager.getLogger(getClass());
-	
-	ProjectConfiguration pConf = new ProjectConfiguration();
-	
-	private String dbhost = pConf.getProperty("dbhost");
-	private String dbuser = pConf.getProperty("dbuser");
-	private String dbpassword = pConf.getProperty("dbpassword");
-	private String dbport = pConf.getProperty("dbport");
-	private String dbname = pConf.getProperty("dbname");
 	
 	private FactoryConection() throws Exception{
 		try{
@@ -40,8 +31,15 @@ public class FactoryConection {
 	private Connection conn;
 	private int cantConn=0;
 	
-	public Connection getConn() throws Exception{		
-		try { 
+	public Connection getConn() throws Exception{
+		try {
+			ProjectConfiguration pConf = new ProjectConfiguration();
+			String dbhost = pConf.getProperty("dbhost");
+			String dbuser = pConf.getProperty("dbuser");
+			String dbpassword = pConf.getProperty("dbpassword");
+			String dbport = pConf.getProperty("dbport");
+			String dbname = pConf.getProperty("dbname");
+			
 			if(conn==null || conn.isClosed()){
 				conn=  DriverManager.getConnection("jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname+"?user="+dbuser+"&password="+dbpassword+"&characterEncoding=Latin1");
 			}

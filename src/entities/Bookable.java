@@ -2,8 +2,9 @@ package entities;
 
 import java.io.Serializable;
 
-public class Bookable{
+public class Bookable implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
 	private TypeBookable type;
@@ -43,5 +44,4 @@ public class Bookable{
 	public int hashCode(){
 		return ((Integer)this.getId()).hashCode();
 	}
-
 }

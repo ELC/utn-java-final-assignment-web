@@ -38,7 +38,7 @@ public class PersonShow extends HttpServlet {
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		}  catch (Exception e) {
+		} catch (Exception e) {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.ERROR, e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);

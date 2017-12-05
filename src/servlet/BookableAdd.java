@@ -34,7 +34,6 @@ public class BookableAdd extends HttpServlet {
 			
 			request.setAttribute("ListTypeBookables", ctrlTypeBookable.getAll(user));
 			request.getRequestDispatcher("/WEB-INF/BookableAdd.jsp").forward(request, response);
-
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
@@ -47,25 +46,23 @@ public class BookableAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Bookable bookable= new Bookable();
-			
 			bookable.setName(request.getParameter("NameBookable"));
 			
 			TypeBookable typeBookable = new TypeBookable();
 			typeBookable.setId(Integer.parseInt(request.getParameter("selectedType")));
 			bookable.setType(typeBookable);
+			
 			ctrlBook.RegisterBookable(bookable, (Person)request.getSession().getAttribute("user"));
 			
 			request.getSession().setAttribute("messageSuccess", "Bookable successfully created");
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);			
-			
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
 		} catch (AppDataException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
-		}
-		  catch (Exception e) {
+		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		}

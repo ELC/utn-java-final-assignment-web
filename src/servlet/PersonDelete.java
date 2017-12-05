@@ -41,7 +41,6 @@ public class PersonDelete extends HttpServlet {
 			logger.log(Level.ERROR, e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

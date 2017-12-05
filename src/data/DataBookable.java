@@ -18,12 +18,12 @@ import util.exceptions.AppDataException;
 
 public class DataBookable {
 	private Logger logger = LogManager.getLogger(getClass());
+	private DataTypeBookable dtb = new DataTypeBookable();
 	
-	public static Bookable buildBookable(ResultSet rs) throws Exception{
+	public Bookable buildBookable(ResultSet rs) throws Exception{
 		Bookable b= new Bookable();
 		b.setId(rs.getInt("id_bookable"));
 		b.setName(rs.getString("name_bookable"));
-		DataTypeBookable dtb = new DataTypeBookable();
 		TypeBookable type_bookable = dtb.getById(rs.getInt("id_type_bookable")); 
 	    b.setType(type_bookable); 
 		return b;
@@ -153,7 +153,6 @@ public class DataBookable {
 	
 	public  ArrayList<Bookable> getAllByType(TypeBookable bookable_type) throws Exception{
 		ArrayList<Bookable> bookables= new ArrayList<Bookable>();
-		
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
@@ -270,11 +269,7 @@ public class DataBookable {
 	}
 	
 	public ArrayList<Bookable> getAvailableBookable(TypeBookable type,Timestamp date)throws Exception{
-//		long time = date.getTime();
-//		int limit = type.getHourslimit();
-		
 		ArrayList<Bookable> bookables= new ArrayList<Bookable>();
-		
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
@@ -319,34 +314,5 @@ public class DataBookable {
 			}
 		}	
 		return bookables;
-		
-		//		select *
-		//		from bookable
-		//		inner join type_bookable
-		//			on bookable.id_type_bookable = type_bookable.id_type_bookable
-		//		inner join reservation res
-		//			on res.id_bookable = bookable.id_bookable
-		//		where reservas.date <> ? or (reservas.date == ? and (reservas.time + ? < ? or ? + ? < reservas.time))
-		//		where reservas.date <> date_ or (reservas.date == date_ and (reservas.time + limit < time or time + limit < reservas.time))
-				
-				
-		
-		//		select id_bookable, name_bookable
-		//		from bookable
-		//		where bookable.id_type_bookable = ? and (		
-		//			select Count(*)
-		// 			from bookable
-		// 			inner join reservation res
-		//				on res.id_bookable = bookable.id_bookable
-		// 			where bookable.id_type_bookable = ? and (reservas.date == ? and not (reservas.time + ? < ? or ? + ? < reservas.time))
-		//			) = 0
-		
-	
-		// proyector, 10, 13
-		// limite 2
-		// Horario 12
-		
-		//   10 + 2 <= 12 or 12 + 2 < 10 => True
-		//   13 + 2 <= 12 or 12 + 2 < 13 => False
 	}	
 }

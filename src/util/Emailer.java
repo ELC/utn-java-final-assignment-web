@@ -12,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 import data.ProjectConfiguration;
 
 public class Emailer {
-	
 	public static Emailer instance;
 	private Logger logger = LogManager.getLogger(getClass());
 	private Properties props;
@@ -26,14 +25,12 @@ public class Emailer {
 	
 	private Emailer() throws Exception {
 		ProjectConfiguration pConf = new ProjectConfiguration();
-		
 		try {
 			props = pConf.getProperties();
 		} catch (IOException e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw e;
 		}
-		
 	}
 	
 	public void send(String to, String subject, String body){

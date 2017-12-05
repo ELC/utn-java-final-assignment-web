@@ -73,7 +73,6 @@ public class DataTypeBookable {
 			if(rs!=null && rs.next()){
 				t=buildTypeBookable(rs);
 			}
-			
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw new AppDataException(null,"An error has occurred in the database, contact the system admin",Level.ERROR);
@@ -91,7 +90,6 @@ public class DataTypeBookable {
 	}
 	
 	public TypeBookable getByName(TypeBookable type)throws Exception{
-		
 		TypeBookable t=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -103,7 +101,6 @@ public class DataTypeBookable {
 			if(rs!=null && rs.next()){
 				t=buildTypeBookable(rs);
 			}
-			
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, e.getMessage());
 			throw new AppDataException(null,"An error has occurred in the database, contact the system admin",Level.ERROR);
@@ -148,8 +145,8 @@ public class DataTypeBookable {
 				if(keyResultSet!=null) {keyResultSet.close();}
 					if (stmt!=null){
 						stmt.close();
-					}
-					FactoryConection.getInstancia().releaseConn();
+				}
+				FactoryConection.getInstancia().releaseConn();
 			} 
 			catch (SQLException e) {
 				logger.log(Level.ERROR, e.getMessage());
@@ -173,7 +170,6 @@ public class DataTypeBookable {
 			int rowsAfected = stmt.executeUpdate();
 			if (rowsAfected==0){
 				throw new AppDataException(null, "The item doesn't exists", Level.ERROR);
-			
 			}
 		} catch (AppDataException apd) {
 			throw apd;
@@ -252,7 +248,6 @@ public class DataTypeBookable {
 				throw e;
 			}
 		}
-		
 		return typeBookables;
 	}
 }

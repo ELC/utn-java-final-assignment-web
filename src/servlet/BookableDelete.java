@@ -27,18 +27,18 @@ public class BookableDelete extends HttpServlet {
     public BookableDelete() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {Person user = (Person)request.getSession().getAttribute("user");
-		
-		if (user == null || !user.hasPermission(AccessLevel.DELETE_BOOKABLE)) {
-			throw new AccessDeniedException();
-		}
-		
-		request.getRequestDispatcher("/WEB-INF/BookableDelete.jsp").forward(request, response);
-		
+		try {
+			Person user = (Person)request.getSession().getAttribute("user");
+			
+			if (user == null || !user.hasPermission(AccessLevel.DELETE_BOOKABLE)) {
+				throw new AccessDeniedException();
+			}
+			
+			request.getRequestDispatcher("/WEB-INF/BookableDelete.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		}  catch (Exception e) {
+		} catch (Exception e) {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.ERROR, e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
@@ -61,8 +61,7 @@ public class BookableDelete extends HttpServlet {
 		} catch (AppDataException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
-		} 
-		  catch (Exception e) {
+		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
 		}

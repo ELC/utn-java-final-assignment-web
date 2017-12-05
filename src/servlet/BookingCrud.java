@@ -79,7 +79,6 @@ public class BookingCrud extends HttpServlet {
 			
         	request.getSession().setAttribute("ListBookables", lb);
         	request.getRequestDispatcher("/WEB-INF/BookingCrud3.jsp").forward(request, response);
-			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/Booking/Show").forward(request, response);

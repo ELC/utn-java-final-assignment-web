@@ -8,7 +8,6 @@ import data.DataPerson;
 import entities.*;
 import util.exceptions.LoginAppDataException;
 
-
 public class ControllerABMCPerson {
 	private DataPerson dataPer = new DataPerson();
 	

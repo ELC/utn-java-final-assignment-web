@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Properties;
 
 public class ProjectConfiguration {
-
 	private Logger logger = LogManager.getLogger(getClass());
 	private static String filename = "C:\\Repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
 	private String filename2 = "C:\\repositories\\utn-java-final-assignment-web\\WebContent\\WEB-INF\\config.properties";
@@ -33,7 +32,6 @@ public class ProjectConfiguration {
 		if (properties == null){
 			loadProperties();
 		}
-
 		return properties.get(key);
 	}
 
@@ -65,9 +63,8 @@ public class ProjectConfiguration {
 					throw e;
 				}
 			}
-
 		}
-	  }
+	}
 
 	public void flushProperties(){
 		properties = null;
@@ -78,7 +75,6 @@ public class ProjectConfiguration {
 	}
 	
 	public Properties getProperties() throws Exception {
-		
 		Properties prop = new Properties();
 		InputStream input = null;
 		
@@ -105,10 +101,8 @@ public class ProjectConfiguration {
 	}
 
 	private void loadProperties() throws Exception {
-
 		Properties prop = new Properties();
 		InputStream input = null;
-
 		try {
 			input = new FileInputStream(filename);
 
@@ -116,15 +110,9 @@ public class ProjectConfiguration {
 
 			resetProperties();
 
-
-			for (Entry<Object, Object> entry : prop.entrySet())
-			{
-				ProjectConfiguration.properties.put(
-						(String)entry.getKey(),
-						(String)entry.getValue()
-						);
+			for (Entry<Object, Object> entry : prop.entrySet()){
+				ProjectConfiguration.properties.put((String)entry.getKey(),	(String)entry.getValue());
 			}
-
 		} catch (IOException ex) {
 			logger.log(Level.ERROR, ex.getMessage());
 			throw ex;
@@ -138,5 +126,5 @@ public class ProjectConfiguration {
 				}
 			}
 		}
-	  }
+	}
 }

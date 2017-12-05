@@ -34,12 +34,11 @@ public class BookableSelect extends HttpServlet {
 			if (user == null || !user.hasPermission(AccessLevel.READ_BOOKABLE)) {
 				throw new AccessDeniedException();
 			}
-			
 			request.getRequestDispatcher("/WEB-INF/BookableSelect.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/403.jsp").forward(request, response);
-		}  catch (Exception e) {
+		} catch (Exception e) {
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.ERROR, e.getMessage());
 			request.getRequestDispatcher("/Bookable/Show").forward(request, response);
@@ -63,8 +62,7 @@ public class BookableSelect extends HttpServlet {
 		} catch (ElementNotFoundException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
-		}
-		  catch (Exception e) {
+		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/PersonInfo.jsp").forward(request, response);
 		}

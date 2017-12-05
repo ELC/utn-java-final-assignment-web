@@ -17,12 +17,11 @@ import entities.Reservation;
 public class DataReservation {
 	
 	private Logger logger = LogManager.getLogger(getClass());
+	private DataPerson dataPer= new DataPerson();
+	private DataBookable databook=new DataBookable();
 	
 	private Reservation buildReservation(ResultSet rs) throws Exception{
-		DataPerson dataPer= new DataPerson();
-		DataBookable databook=new DataBookable();
 		Reservation re= new Reservation();
-		//re.setId(rs.getInt("id_type_bookable"));
 		re.setPerson(dataPer.getById(rs.getInt("id_person")));
 		re.setBookable(databook.getById(rs.getInt("id_bookable")));
 		re.setDate(rs.getTimestamp("dateTimeReservation"));

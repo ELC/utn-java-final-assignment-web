@@ -62,7 +62,6 @@ public class PersonAdd extends HttpServlet {
 			per.setUserRoles(ur);
 			ctrlPer.RegisterPerson(per, (Person)request.getSession().getAttribute("user"));
 			
-			
 			Person user = (Person)request.getSession().getAttribute("user");
 			Logger logger = LogManager.getLogger(getClass());
 			logger.log(Level.INFO, "Person " + per.getDni() + " has been added by " + user.getDni());

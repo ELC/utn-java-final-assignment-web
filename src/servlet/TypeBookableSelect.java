@@ -17,7 +17,6 @@ import entities.Person;
 import entities.TypeBookable;
 import logic.ControllerABMCTypeBookable;
 import util.exceptions.AccessDeniedException;
-import util.exceptions.AppDataException;
 import util.exceptions.ElementNotFoundException;
 
 @WebServlet({ "/TypeBookable/Select" })
@@ -34,7 +33,6 @@ public class TypeBookableSelect extends HttpServlet {
 			if (user == null || !user.hasPermission(AccessLevel.READ_TYPEBOOKABLE)) {
 				throw new AccessDeniedException();
 			}
-			
 			request.getRequestDispatcher("/WEB-INF/TypeBookableSelect.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
@@ -44,7 +42,6 @@ public class TypeBookableSelect extends HttpServlet {
 			logger.log(Level.ERROR, e.getMessage());
 			request.getRequestDispatcher("/Person/Show").forward(request, response);
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,8 +61,7 @@ public class TypeBookableSelect extends HttpServlet {
 		} catch (ElementNotFoundException e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/TypeBookableInfo.jsp").forward(request, response);
-		}
-		  catch (Exception e) {
+		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/WEB-INF/TypeBookableInfo.jsp").forward(request, response);
 		}

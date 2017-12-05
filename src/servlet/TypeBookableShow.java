@@ -31,7 +31,6 @@ public class TypeBookableShow extends HttpServlet {
 			if (user == null || !user.hasPermission(AccessLevel.READ_TYPEBOOKABLE)) {
 				throw new AccessDeniedException();
 			}
-			
 			doPost(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());
@@ -50,7 +49,6 @@ public class TypeBookableShow extends HttpServlet {
 			List<TypeBookable> tb = ctrlTypeBookable.getAllShowByUser(user);
 			
 			request.getSession().setAttribute("TypeBookables", tb);
-			
 			request.getRequestDispatcher("/WEB-INF/TypeBookableShow.jsp").forward(request, response);
 		} catch (AccessDeniedException e) {
 			request.getSession().setAttribute("message", e.getMessage());

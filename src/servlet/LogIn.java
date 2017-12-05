@@ -29,7 +29,6 @@ public class LogIn extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-
 			String user=request.getParameter("user");
 			String pass=request.getParameter("pass");
 			
@@ -44,11 +43,8 @@ public class LogIn extends HttpServlet {
 			logger.log(Level.INFO, "User " + per.getDni() + " has logged in");
 
 			request.getSession().setAttribute("user", per);
-			
 			request.getSession().setAttribute("messageInfo", "Wellcome back!!");
-			
 			request.getRequestDispatcher("/index.jsp").forward(request, response);			
-			
 		} catch (Exception e) {
 			request.getSession().setAttribute("message", e.getMessage());
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

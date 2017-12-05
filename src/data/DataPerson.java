@@ -21,7 +21,7 @@ public class DataPerson {
 	private DataUserRoles ctrlRoles = new DataUserRoles();
 	
 	private Person buildPerson(ResultSet rs) throws Exception{
-			Person p = new Person();
+		Person p = new Person();
 		try {
 			p.setId(rs.getInt("id_person"));
 			p.setName(rs.getString("name_person"));

@@ -22,8 +22,6 @@ public enum AccessLevel{
 	READ_TYPEBOOKABLE (1 << 15),
 	READ_ALLBOOKING	(1 << 16);
 	
-	
-	
 	private final int _value;
 	AccessLevel(int value){
 		_value = value;
