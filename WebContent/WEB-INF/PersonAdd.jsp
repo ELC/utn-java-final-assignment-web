@@ -13,7 +13,7 @@
 			<input name="Email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus style="margin: 15px 0px 15px 0px; height:2em">
 			<input type="checkbox" name="Option" value="true"> Enable<br>
 			
-			<select style="width : 143px" name="ur" >
+			<select required style="width : 143px" name="ur" >
             	<c:forEach var="ur" items="${ListUserRoles}">
 					<option value="${ur.id}" >
 						${ur.name}

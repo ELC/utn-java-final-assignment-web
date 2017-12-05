@@ -7,7 +7,7 @@
 <t:base>
     <jsp:body>
 		<form name="AddBooking" action="${pageContext.request.contextPath}/Booking/CRUD" method="GET">
-        	<select style="width : 143px" name="tb" >
+        	<select required style="width : 143px" name="tb" >
             	<c:forEach var="tb" items="${ListTypeBookables}">
 					<option value="${tb.id}" >
 						${tb.name}

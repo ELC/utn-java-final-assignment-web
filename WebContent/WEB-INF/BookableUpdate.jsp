@@ -10,7 +10,7 @@
         <form name="UpdateBookable" action="${pageContext.request.contextPath}/Bookable/Update" method="post">
            	<input name="Id" id="inputNameBookable" class="form-control" placeholder="Id Bookable" required type="Name" style="margin: 15px 0px 15px 0px; height:2em">
             <input name="NameBookable" id="inputNameBookable" class="form-control" placeholder="Name Bookable" required type="Name" style="margin: 15px 0px 15px 0px; height:2em">
-            <select style="width : 143px" name="selectedType" >
+            <select required style="width : 143px" name="selectedType" >
             	<c:forEach var="tb" items="${ListTypeBookables}">
 					<option value="${tb.id}" >
 						${tb.name}
