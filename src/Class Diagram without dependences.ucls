@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+<class-diagram version="1.2.2" icons="true" automaticImage="GIF" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="data" project="Java Assignment version Web" 
     file="/Java Assignment version Web/src/data" binary="false" corner="BOTTOM_RIGHT">    
@@ -458,362 +458,522 @@
     </display>  
   </class>  
   <association id="54">    
-    <bendpoint x="1270" y="346"/>    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="55" name="ctrlBook"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
-    <end type="SOURCE" refId="43" navigable="false">      
-      <attribute id="58" name="ctrlBookable"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="60">    
-    <bendpoint x="1649" y="1264"/>    
-    <bendpoint x="1346" y="1264"/>    
-    <end type="SOURCE" refId="41" navigable="false">      
-      <attribute id="61" name="ctrlTypeBookable"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="64" name="dataRoles"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="67" name="dataPer"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <bendpoint x="1274" y="761"/>    
-    <end type="SOURCE" refId="40" navigable="false">      
-      <attribute id="70" name="ctrlPer"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <bendpoint x="1160" y="1338"/>    
-    <bendpoint x="1160" y="1154"/>    
-    <end type="SOURCE" refId="50" navigable="false">      
-      <attribute id="73" name="ctrlTypeBookable"/>      
-      <multiplicity id="74" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="76" name="dataRes"/>      
-      <multiplicity id="77" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="78">    
-    <bendpoint x="1122" y="1481"/>    
-    <bendpoint x="1120" y="1149"/>    
-    <end type="SOURCE" refId="52" navigable="false">      
-      <attribute id="79" name="ctrlTypeBookable"/>      
-      <multiplicity id="80" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="81">    
-    <bendpoint x="1294" y="454"/>    
-    <bendpoint x="1254" y="429"/>    
-    <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="82" name="ctrlRes"/>      
-      <multiplicity id="83" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="84">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="85" name="dtb"/>      
-      <multiplicity id="86" minimum="0" maximum="1"/>    
+      <attribute id="55" name="dtb">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="87">    
-    <bendpoint x="1574" y="745"/>    
-    <bendpoint x="1302" y="744"/>    
-    <end type="SOURCE" refId="51" navigable="false">      
-      <attribute id="88" name="ctrlPer"/>      
-      <multiplicity id="89" minimum="0" maximum="1"/>    
+  <association id="57">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="58" name="ctrlRoles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="61" name="dataTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="64" name="privileges">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="65" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <bendpoint x="1300" y="600"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="67" name="ctrlPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="68" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="69">    
+    <bendpoint x="1981" y="293"/>    
+    <bendpoint x="1989" y="1101"/>    
+    <bendpoint x="1280" y="1072"/>    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="70" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="71" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="72">    
+    <bendpoint x="1294" y="454"/>    
+    <bendpoint x="1254" y="429"/>    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="73" name="ctrlRes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="76" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="77" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="79" name="ctrlPerson">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="80" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="82" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="83" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <bendpoint x="1736" y="150"/>    
+    <bendpoint x="1286" y="150"/>    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="85" name="ctrlBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="88" name="type">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="90">    
     <bendpoint x="1254" y="1134"/>    
     <end type="SOURCE" refId="48" navigable="false">      
-      <attribute id="91" name="ctrlTypeBookable"/>      
-      <multiplicity id="92" minimum="0" maximum="1"/>    
+      <attribute id="91" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="93">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="94" name="ctrlRoles"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
+    <bendpoint x="1945" y="378"/>    
+    <bendpoint x="1952" y="1077"/>    
+    <bendpoint x="1426" y="1060"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="94" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="95" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="96">    
-    <bendpoint x="1981" y="293"/>    
-    <bendpoint x="1989" y="1101"/>    
-    <bendpoint x="1280" y="1072"/>    
-    <end type="SOURCE" refId="47" navigable="false">      
-      <attribute id="97" name="ctrlTypeBookable"/>      
-      <multiplicity id="98" minimum="0" maximum="1"/>    
+    <bendpoint x="2026" y="-3"/>    
+    <bendpoint x="2028" y="1130"/>    
+    <bendpoint x="1254" y="1092"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="97" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="98" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="99">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="100" name="person"/>      
-      <multiplicity id="101" minimum="0" maximum="1"/>    
+    <bendpoint x="1574" y="745"/>    
+    <bendpoint x="1302" y="744"/>    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="100" name="ctrlPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="101" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="102">    
-    <bendpoint x="1945" y="378"/>    
-    <bendpoint x="1952" y="1077"/>    
-    <bendpoint x="1426" y="1060"/>    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="103" name="ctrlTypeBookable"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="103" name="dataPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="104" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="105">    
-    <end type="SOURCE" refId="42" navigable="false">      
-      <attribute id="106" name="ctrlRes"/>      
-      <multiplicity id="107" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="109" name="instance"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="111">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="112" name="userRoles"/>      
-      <multiplicity id="113" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="114">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="115" name="privileges"/>      
-      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="117">    
-    <bendpoint x="1628" y="-20"/>    
-    <bendpoint x="1278" y="-18"/>    
-    <end type="SOURCE" refId="35" navigable="false">      
-      <attribute id="118" name="ctrlBook"/>      
-      <multiplicity id="119" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="106" name="ctrlBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="107" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="120">    
-    <bendpoint x="1300" y="600"/>    
-    <end type="SOURCE" refId="36" navigable="false">      
-      <attribute id="121" name="ctrlPer"/>      
-      <multiplicity id="122" minimum="0" maximum="1"/>    
+  <association id="108">    
+    <bendpoint x="886" y="112"/>    
+    <bendpoint x="710" y="112"/>    
+    <bendpoint x="286" y="113"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="109" name="dataBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="110" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <bendpoint x="1240" y="385"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="112" name="ctrlBooking">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="113" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <bendpoint x="1628" y="305"/>    
+    <bendpoint x="1290" y="305"/>    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="115" name="ctrlBook">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <bendpoint x="1274" y="761"/>    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="118" name="ctrlPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <bendpoint x="1160" y="1338"/>    
+    <bendpoint x="1160" y="1154"/>    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="121" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="122" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="123">    
-    <bendpoint x="1278" y="890"/>    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="124" name="ctrlPer"/>      
-      <multiplicity id="125" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="124" name="dataRes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="125" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="126">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="127" name="person">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="128" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
     <bendpoint x="1774" y="1048"/>    
     <bendpoint x="1290" y="1038"/>    
     <bendpoint x="1278" y="972"/>    
     <end type="SOURCE" refId="51" navigable="false">      
-      <attribute id="127" name="ctrlRoles"/>      
-      <multiplicity id="128" minimum="0" maximum="1"/>    
+      <attribute id="130" name="ctrlRoles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="131" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="129">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="130" name="dataPer"/>      
-      <multiplicity id="131" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="132">    
     <bendpoint x="1278" y="905"/>    
     <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="133" name="ctrlRoles"/>      
-      <multiplicity id="134" minimum="0" maximum="1"/>    
+      <attribute id="133" name="ctrlRoles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="134" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="135">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="136" name="databook"/>      
-      <multiplicity id="137" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="136" name="dataPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="137" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="138">    
-    <bendpoint x="1240" y="385"/>    
+    <bendpoint x="1270" y="346"/>    
     <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="139" name="ctrlBooking"/>      
-      <multiplicity id="140" minimum="0" maximum="1"/>    
+      <attribute id="139" name="ctrlBook">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="140" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="141">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="142" name="instance"/>      
-      <multiplicity id="143" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="142" name="dataRoles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="143" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="144">    
-    <bendpoint x="886" y="112"/>    
-    <bendpoint x="710" y="112"/>    
-    <bendpoint x="286" y="113"/>    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="145" name="dataBookable"/>      
-      <multiplicity id="146" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="145" name="ctrlBook">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="147">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="148" name="bookable"/>      
-      <multiplicity id="149" minimum="0" maximum="1"/>    
+    <bendpoint x="1122" y="1481"/>    
+    <bendpoint x="1120" y="1149"/>    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="148" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="149" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="150">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="151" name="type"/>      
-      <multiplicity id="152" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="151" name="userRoles">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="153">    
-    <end type="SOURCE" refId="49" navigable="false">      
-      <attribute id="154" name="ctrlBook"/>      
-      <multiplicity id="155" minimum="0" maximum="1"/>    
+    <bendpoint x="1628" y="-20"/>    
+    <bendpoint x="1278" y="-18"/>    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="154" name="ctrlBook">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="156">    
-    <bendpoint x="2026" y="-3"/>    
-    <bendpoint x="2028" y="1130"/>    
-    <bendpoint x="1254" y="1092"/>    
-    <end type="SOURCE" refId="35" navigable="false">      
-      <attribute id="157" name="ctrlTypeBookable"/>      
-      <multiplicity id="158" minimum="0" maximum="1"/>    
+    <bendpoint x="1057" y="1625"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="157" name="ctrlType">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="158" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="159">    
-    <end type="SOURCE" refId="53" navigable="false">      
-      <attribute id="160" name="ctrlPerson"/>      
-      <multiplicity id="161" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="160" name="databook">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="161" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <bendpoint x="1278" y="890"/>    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="163" name="ctrlPer">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="162">    
-    <bendpoint x="1628" y="305"/>    
-    <bendpoint x="1290" y="305"/>    
-    <end type="SOURCE" refId="47" navigable="false">      
-      <attribute id="163" name="ctrlBook"/>      
-      <multiplicity id="164" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="165">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="166" name="dataTypeBookable"/>      
-      <multiplicity id="167" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="166" name="bookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="167" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="168">    
-    <bendpoint x="1057" y="1625"/>    
-    <end type="SOURCE" refId="37" navigable="false">      
-      <attribute id="169" name="ctrlType"/>      
-      <multiplicity id="170" minimum="0" maximum="1"/>    
+    <bendpoint x="1649" y="1264"/>    
+    <bendpoint x="1346" y="1264"/>    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="169" name="ctrlTypeBookable">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="170" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="171">    
-    <bendpoint x="1736" y="150"/>    
-    <bendpoint x="1286" y="150"/>    
-    <end type="SOURCE" refId="46" navigable="false">      
-      <attribute id="172" name="ctrlBookable"/>      
-      <multiplicity id="173" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="172" name="ctrlRes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="173" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
