@@ -6,7 +6,7 @@
 <t:base>
     <jsp:body>
 		<form name="DeletePerson" action="${pageContext.request.contextPath}/Booking/Delete" method="post">
-		    <select style="width : 143px" name="id" >
+		    <select required style="width : 143px" name="id">
             	<c:forEach var="tb" items="${ListBookings}">
 					<option value="${tb.id}" >
 						${tb.id}
